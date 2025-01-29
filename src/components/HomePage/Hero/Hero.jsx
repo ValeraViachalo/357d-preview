@@ -4,7 +4,7 @@ import React, { useEffect, useRef, useState } from "react";
 import "./Hero.scss";
 import Link from "next/link";
 import { Logo } from "@/utils/Logo/Logo";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import { ease } from "@/lib/helpers/ease";
 import { Content } from "@/utils/Content/Content";
 

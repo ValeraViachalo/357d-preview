@@ -40,7 +40,7 @@ const ease2 = [0.76, 0, 0.24, 1];
 
 export const ContactTitle = {
   initial: {
-    filter: "blur(.7vw)",
+    filter: "blur(.2vw)",
     opacity: 0,
     scale: 1.1,
   },
@@ -64,7 +64,7 @@ export const ContactTitle = {
     }
   },
   exit: {
-    filter: "blur(.7vw)",
+    filter: "blur(.2vw)",
     opacity: 0,
     scale: .9,
     transition: {

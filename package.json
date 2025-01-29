@@ -18,7 +18,6 @@
     "prop-types": "^15.8.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-lazyload": "^3.2.1",
     "sass": "^1.82.0",
     "yup": "^1.6.1"
   }
