@@ -49,7 +49,7 @@ export default function Header() {
   return (
     data && (
       <header className={clsx("header grid", { "header--bg": !isTopScroll })}>
-        <Link href="/" className="header__logo">
+        <Link href={isGrePath ? "/gre" : "/"} className="header__logo">
           <AnimatePresence mode="wait">
             {path === "/" || path === "/gre" ? (
               isTopScroll ? (
