@@ -2,7 +2,7 @@ export async function getFetchData(apiUrl) {
   try {
     const response = await fetch(apiUrl, {
       cache: "no-store", // For dynamic data
-      // OR use next: { revalidate: 100 } for ISR
+      revalidate: 1000,
     });
 
     if (!response.ok) {
