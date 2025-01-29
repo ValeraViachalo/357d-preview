@@ -10,7 +10,7 @@ export default async function Home() {
   const preparedData = await getFetchData(URL_HOME);
     const data = useLanguageContent(preparedData, "en");
   
-  return (
+  return data && (
     <HomePage data={data}/>
   );
 }

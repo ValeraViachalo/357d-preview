@@ -1,4 +1,5 @@
 // const URL_BASE = `http://localhost:3000/data/`
+// const URL_BASE = `${process.env.NEXT_PUBLIC_BASE_URL}/data/`
 const URL_BASE = `${process.env.NEXT_PUBLIC_BASE_URL}/data/`
 
 export const URL_HEADER = URL_BASE + "/header.json"
