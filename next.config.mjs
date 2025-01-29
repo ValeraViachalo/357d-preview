@@ -14,10 +14,8 @@ const nextConfig = {
   sassOptions: {
     includePaths: ["styles"],
     prependData: `
-      @use "/src/styles/utils/variables" as v;
-      @use "/src/styles/utils/typography" as t;
-      @use "/src/styles/utils/mixins" as m;
-    `,
+    @import '/src/styles/global';
+  `,
     functions: {
       "get($keys)": function (keys) {
         keys = keys.getValue().split(".");

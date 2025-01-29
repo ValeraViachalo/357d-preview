@@ -1,6 +1,6 @@
-// @use "./utils/typography";
-// @use "./utils/mixins";
-// @use "./utils/variables";
+@import "./utils/typography";
+@import "./utils/mixins";
+@import "./utils/variables";
 
 .body {
   @extend %body-text;
