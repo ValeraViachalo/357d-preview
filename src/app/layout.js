@@ -1,5 +1,6 @@
 import localFont from "next/font/local";
 import "@/styles/reset.scss";
+import "@/styles/global.scss";
 import {
   ScrollProvider,
 } from "@/lib/providers/ScrollProvider/ScrollProvider";

@@ -4,31 +4,33 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: 'images.beta.cosmos.so',
-        port: '',
+        protocol: "https",
+        hostname: "images.beta.cosmos.so",
+        port: "",
         // pathname: '/account123/**',
       },
     ],
   },
   sassOptions: {
-    includePaths: ['styles'],
+    includePaths: ["styles"],
     prependData: `
-    @import '/src/styles/global';
-  `,
+      @use "/src/styles/utils/variables" as v;
+      @use "/src/styles/utils/typography" as t;
+      @use "/src/styles/utils/mixins" as m;
+    `,
     functions: {
-      'get($keys)': function (keys) {
-        keys = keys.getValue().split('.')
-        let result = sassVars
+      "get($keys)": function (keys) {
+        keys = keys.getValue().split(".");
+        let result = sassVars;
         for (let i = 0; i < keys.length; i++) {
-          result = result[keys[i]]
+          result = result[keys[i]];
         }
-        result = castToSass(result)
+        result = castToSass(result);
 
-        return result
+        return result;
       },
     },
-  }
+  },
 };
 
 export default nextConfig;
