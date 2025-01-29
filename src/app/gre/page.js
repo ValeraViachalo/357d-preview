@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+
 import HomePage from "@/components/HomePage/HomePage";
 import { getFetchData } from "@/lib/helpers/DataFetch";
 import { URL_HOME } from "@/lib/helpers/DataUrls";
