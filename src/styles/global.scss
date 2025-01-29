@@ -42,8 +42,8 @@
 }
 
 .container {
-  padding-right: 4vw;
-  padding-left: 4vw;
+  padding-right: VW(20);
+  padding-left: VW(20);
 }
 
 .shadow {
@@ -68,4 +68,10 @@
     height: 100%;
     width: 100%;
   }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, VW(108));
+  grid-gap: VW(10);
 }

@@ -1,0 +1,38 @@
+.button {
+  padding: VW(13) VW(60) VW(10);
+  border-radius: 10vw;
+  // overflow: hidden;
+  display: inline-flex;
+  transition: scale 1s $ease-in-out-circ;
+  width: fit-content;
+
+  @include hover {
+    scale: 1.05;
+
+    .button__text {
+      transform: translateY(-1.22em);
+    }
+  }
+
+  &__text {
+    text-shadow: 0 1.2em 0;
+    transition: transform 1s $ease-in-out-circ;
+    display: inline-block;
+
+    &-wrapper {
+      height: 1.1em;
+      overflow-y: hidden;
+      display: inline-block;
+    }
+  }
+
+  &--white {
+    background-color: $c-white;
+    color: $c-black;
+  }
+  
+  &--black {
+    color: $c-white;
+    background-color: $c-black;
+  }
+}

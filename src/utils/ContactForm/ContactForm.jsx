@@ -1,0 +1,224 @@
+"use client";
+
+import React, { useContext, useEffect, useState } from "react";
+import "./ContactForm.scss";
+import * as Yup from "yup";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import classNames from "classnames";
+import { useLanguageContent } from "@/lib/helpers/useLanguageContent";
+import { getFetchData } from "@/lib/helpers/DataFetch";
+import { LocaleContext } from "@/lib/providers/LocaleContext/context";
+import { URL_CONTACT } from "@/lib/helpers/DataUrls";
+import { AnimatePresence, motion } from "framer-motion";
+import Link from "next/link";
+import Image from "next/image";
+import { ContactTitle } from "@/lib/helpers/anim";
+
+const ContactForm = () => {
+  const [submitted, setSubmitted] = useState(false);
+  const [data, setData] = useState(null);
+  const { lang } = useContext(LocaleContext);
+  
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const result = await getFetchData(URL_CONTACT);
+        setData(useLanguageContent(result, lang));
+      } catch (error) {
+        console.error("Error fetching header data:", error);
+      }
+    }
+
+    fetchData();
+  }, [lang]);
+
+  const validationSchema = Yup.object().shape({
+    email: Yup.string()
+      .email(data?.contact.email.errorMessage)
+      .required(data?.contact.email.errorMessage),
+    name: Yup.string(),
+    phone: Yup.string().required(data?.contact.phone.errorMessage),
+    message: Yup.string(),
+  });
+
+  const handleSubmit = (values, { setSubmitting, resetForm }) => {
+    console.log(values);
+    setSubmitting(false);
+    setSubmitted(true);
+    resetForm();
+  };
+
+  return (
+    data && (
+      <section className="contact-form">
+        <div className="contact-form__wrapper">
+          <h1 className="contact-form__title upperCase">
+            <span>{data.title.top}</span>
+            <br />
+              <AnimTitle titles={data.title.middle} />
+            <span>{data.title.bottom}</span>
+          </h1>
+          <Formik
+            initialValues={{
+              email: "",
+              name: "",
+              phone: "",
+              message: "",
+            }}
+            validationSchema={validationSchema}
+            onSubmit={handleSubmit}
+          >
+            {({ errors, touched, isValid, dirty }) => (
+              <Form className="form">
+                <div className="input-wrapper">
+                  <Field
+                    type="email"
+                    name="email"
+                    placeholder={data.contact.email.text}
+                    className={classNames("input", {
+                      "input--error": errors.email && touched.email,
+                    })}
+                  />
+                  <ErrorMessage
+                    name="email"
+                    component="p"
+                    className="input-error-msg"
+                  />
+                </div>
+
+                <div className="input-wrapper">
+                  <Field
+                    type="text"
+                    name="name"
+                    placeholder={data.contact.name.text}
+                    className={classNames("input", {
+                      "input--error": errors.name && touched.name,
+                    })}
+                  />
+                  <ErrorMessage
+                    name="name"
+                    component="p"
+                    className="input-error-msg"
+                  />
+                </div>
+
+                <div className="input-wrapper">
+                  <Field
+                    type="tel"
+                    name="phone"
+                    placeholder={data.contact.phone.text}
+                    className={classNames("input", {
+                      "input--error": errors.phone && touched.phone,
+                    })}
+                  />
+                  <ErrorMessage
+                    name="phone"
+                    component="p"
+                    className="input-error-msg"
+                  />
+                </div>
+
+                <div className="input-wrapper">
+                  <Field
+                    as="textarea"
+                    name="message"
+                    placeholder={data.contact.message.text}
+                    className="input textarea"
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  className={classNames("submit-button button button--black", {
+                    "submit-button--disabled": !isValid || !dirty
+                  })}
+                  disabled={!isValid || !dirty}
+                >
+                  <p className="button__text-wrapper">
+                    {data.contact.button.split("").map((word, index) => (
+                      <span
+                        className="button__text"
+                        key={index}
+                        style={{ transitionDelay: `${index * 0.01}s` }}
+                      >
+                        {word !== " " ? word : <>&nbsp;</>}
+                      </span>
+                    ))}
+                  </p>
+                </button>
+              </Form>
+            )}
+          </Formik>
+          <div className="socials">
+            <p className="socials__text">
+              {data.socials.text}
+            </p>
+            <div className="number-link">
+              <SocialsButton icon="/images/socials/phone.svg" text={data.socials.phone} href={`tel:${data.socials.phone}`} />
+            </div>
+            <div className="list">
+              {data.socials.list.map((currI, i) => (
+                <SocialsButton href={currI.href} text={currI.text} icon={currI.icon} key={i} />
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+    )
+  );
+};
+
+const AnimTitle = ({ titles }) => {
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveIndex(
+        (prevIndex) => (prevIndex + 1) % titles.length
+      );
+    }, 2000);
+    return () => clearInterval(interval);
+  });
+
+   return (
+    <div className="title-anim__wrapper">
+      {titles.map((currTitle, i) => (
+        <motion.h1
+          className="title-anim"
+          variants={ContactTitle}
+          animate={activeIndex === i ? "animate" : "exit"}
+          key={i}
+        >
+          {currTitle}
+        </motion.h1>
+      ))}
+    </div>
+   );
+}
+
+const SocialsButton = ({icon, href, text}) => {
+  return (
+    <Link
+      href={href}
+      target="_blank"
+      className="socials-button"
+    >
+      <Image
+        width={17}
+        height={17}
+        src={icon}
+        alt=""
+        className="socials-button__icon"
+      />
+      <h3 className="socials-button__text-wrapper">
+        {text.split("").map((word, index) => (
+          <span className="socials-button__text" key={index} style={{ transitionDelay: `${index * 0.01}s` }}>
+            {word !== " " ? word : (<>&nbsp;</>)}
+          </span>
+        ))}
+      </h3>
+    </Link>
+  );
+};
+
+export default ContactForm;

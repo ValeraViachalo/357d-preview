@@ -22,7 +22,7 @@ function easeInOutExpo(x) {
     : (2 - Math.pow(2, -20 * x + 10)) / 2;
 }
 
-export const ScrollProvider= ({ children, scrollBar = false, wrapper }) => {
+export const ScrollProvider = ({ children, scrollBar = false, wrapper }) => {
   const [lenis, setLenis] = useState(null);
 
   useEffect(() => {
@@ -51,6 +51,28 @@ export const ScrollProvider= ({ children, scrollBar = false, wrapper }) => {
       });
     }
   }, []);
+
+  // Add click event listener for data-use-scroll elements
+  useEffect(() => {
+    const handleClick = (e) => {
+      const scrollTrigger = e.target.closest('[data-use-scroll]');
+      if (scrollTrigger) {
+        // Prevent default behavior and event propagation
+        e.preventDefault();
+        e.stopPropagation();
+        
+        const targetSection = scrollTrigger.getAttribute('data-use-scroll');
+        const targetElement = document.querySelector(targetSection);
+        if (targetElement) {
+          scrollTo(targetElement);
+        }
+      }
+    };
+
+    // Use capture phase to ensure we handle the event before other listeners
+    document.addEventListener('click', handleClick, true);
+    return () => document.removeEventListener('click', handleClick, true);
+  }, [lenis]);
 
   const scrollTo = (target) => {
     if (lenis) {

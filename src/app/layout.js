@@ -5,21 +5,23 @@ import {
 } from "@/lib/providers/ScrollProvider/ScrollProvider";
 import Header from "@/utils/Header/Header";
 import Footer from "@/utils/Footer/Footer";
+import { LocaleProvider } from "@/lib/providers/LocaleContext/LocaleContext";
+import ContactForm from "@/utils/ContactForm/ContactForm";
 
-const neueHaasDisplay = localFont({
+const ppMori = localFont({
   src: [
     {
-      path: "./fonts/NeueHaasDisplay/NeueHaasDisplayBold.ttf",
+      path: "./fonts/PPMori/PPMori-SemiBold.otf",
       weight: "700",
       style: "normal",
     },
     {
-      path: "./fonts/NeueHaasDisplay/NeueHaasDisplayRoman.ttf",
+      path: "./fonts/PPMori/PPMori-Regular.otf",
       weight: "400",
       style: "normal",
     },
   ],
-  variable: "--font-neue-haas-display",
+  variable: "--pp-mori",
 });
 
 export const metadata = {
@@ -30,11 +32,14 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className="html">
-      <body className={`${neueHaasDisplay.variable} body`}>
+      <body className={`${ppMori.variable} body`}>
         <ScrollProvider scrollBar></ScrollProvider>
-        <Header />
-        {children}
-        <Footer />
+        <LocaleProvider>
+          <Header />
+          {children}
+          <ContactForm />
+          <Footer />
+        </LocaleProvider>
       </body>
     </html>
   );

@@ -1,14 +1,50 @@
-[
-  {
-    "name": "Home",
-    "link": "/"
+{
+  "en": {
+    "list": [
+      {
+        "name": "Projects",
+        "link": "/"
+      },
+      {
+        "name": "About us",
+        "link": "/faq"
+      },
+      {
+        "name": "For clients",
+        "link": "/about"
+      },
+      {
+        "name": "Properties for Sale",
+        "link": "/about"
+      }
+    ],
+    "contact": {
+      "name": "Contact",
+      "href": "#"
+    }
   },
-  {
-    "name": "FAQ",
-    "link": "/faq"
-  },
-  {
-    "name": "About",
-    "link": "/about"
+  "gre": {
+    "list": [
+      {
+        "name": "Έργα",
+        "link": "/"
+      },
+      {
+        "name": "Σχετικά με εμάς",
+        "link": "/faq"
+      },
+      {
+        "name": "Για πελάτες",
+        "link": "/about"
+      },
+      {
+        "name": "Ακίνητα προς πώληση",
+        "link": "/about"
+      }
+    ],
+    "contact": {
+      "name": "Επικοινωνία",
+      "href": "#"
+    }
   }
-]
+}

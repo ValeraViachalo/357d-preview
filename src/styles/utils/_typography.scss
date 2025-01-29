@@ -1,71 +1,47 @@
 @import "./mixins";
 
 %h1 {
-  font-family: var(--font-neue-haas-display), sans-serif;
-  font-size: 2.8vw;
+  font-family: var(--pp-mori), sans-serif;
+  font-size: VW(62);
   font-style: normal;
-  font-weight: bold;
-  line-height: 142%;
-  text-transform: uppercase;
+  font-weight: 700;
+  line-height: 100%;
   letter-spacing: normal;
-
-  @include mq() {
-    font-size: 9.4vw;
-  }
 }
 
 .super-text {
-  font-family: var(--font-neue-haas-display), sans-serif;
+  font-family: var(--pp-mori), sans-serif;
   font-size: 4.7vw;
   font-style: bold;
   line-height: 90%;
   text-transform: uppercase;
   letter-spacing: normal;
-
-  @include mq() {
-    font-size: 11vw;
-  }
 }
 
-%h2 {
-  font-family: var(--font-neue-haas-display), sans-serif;
-  font-size: 2vw;
+%h3 {
+  font-family: var(--pp-mori), sans-serif;
+  font-size: VW(20);
   font-style: bold;
   font-weight: normal;
-  line-height: normal;
+  line-height: 105%;
   letter-spacing: normal;
-
-  @include mq() {
-    font-size: 6.4vw;
-  }
 }
 
 %body-text {
-  font-family: var(--font-neue-haas-display), sans-serif;
-  font-size: 1.5vw;
+  font-family: var(--pp-mori), sans-serif;
+  font-size: VW(14);
   font-style: normal;
   font-weight: 400;
-  line-height: 140%;
-  letter-spacing: -0.01vw;
-  
-  @include mq() {
-    letter-spacing: -0.4vw;
-    font-size: 4.7vw;
-  }
+  line-height: 110%;
+  letter-spacing: normal;
 }
 
-.small-text {
-  font-family: var(--font-neue-haas-display), sans-serif;
-  font-size: 1vw;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 140%;
-  letter-spacing: -0.03vw;
+.upperCase {
+  text-transform: uppercase;
 }
 
 %link {
   @extend %body-text;
-  font-weight: bold;
 }
 
 .bold {
@@ -75,16 +51,15 @@
 .body {
   @extend %body-text;
 
+  h1 {
+    @extend %h1;
+  }
 
-h1 {
-  @extend %h1;
-}
+  h3 {
+    @extend %h3;
+  }
 
-h2 {
-  @extend %h2;
-}
-
-a {
-  @extend %link;
-}
+  a {
+    @extend %link;
+  }
 }

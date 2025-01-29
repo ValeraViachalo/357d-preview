@@ -1,0 +1,106 @@
+{
+  "en": {
+    "title": {
+      "top": "We have",
+      "middle": [
+        "adress",
+        "ESTATE",
+        "INVESTMENT",
+        "SOLUTIONS",
+        "SPACE",
+        "QUALITY"
+      ],
+      "bottom": "you would be proud of"
+    },
+    "contact": {
+      "email": {
+        "text": "Email",
+        "errorMessage": "Please enter a valid email address"
+      },
+      "name": {
+        "text": "Name"
+      },
+      "phone": {
+        "text": "Phone number*",
+        "errorMessage": "The field is required"
+      },
+      "message": {
+        "text": "How can we help you?"
+      },
+      "button": "Send a request"
+    },
+    "socials": {
+      "text": "Feel free to reach out to us in whatever way suits you best — we're always ready to assist you.",
+      "phone": "357 9016 9445",
+      "list": [
+        {
+          "text": "Facebook",
+          "href": "/",
+          "icon": "/images/socials/fb.svg"
+        },
+        {
+          "text": "Instagram",
+          "href": "/",
+          "icon": "/images/socials/ig.svg"
+        },
+        {
+          "text": "LinkedIn",
+          "href": "/",
+          "icon": "/images/socials/link.svg"
+        }
+      ]
+    }
+  },
+  "gre": {
+    "title": {
+      "top": "Διαθέτουμε",
+      "middle": [
+        "διεύθυνση",
+        "ΑΚΙΝΗΤΑ",
+        "ΕΠΕΝΔΥΣΗ",
+        "ΛΥΣΕΙΣ",
+        "ΧΩΡΟΣ",
+        "ΠΟΙΟΤΗΤΑ"
+      ],
+      "bottom": "που θα σας κάνει περήφανους"
+    },
+    "contact": {
+      "email": {
+        "text": "Email",
+        "errorMessage": "Παρακαλώ εισάγετε μια έγκυρη διεύθυνση email"
+      },
+      "name": {
+        "text": "Όνομα"
+      },
+      "phone": {
+        "text": "Αριθμός τηλεφώνου*",
+        "errorMessage": "Το πεδίο είναι υποχρεωτικό"
+      },
+      "message": {
+        "text": "Πώς μπορούμε να σας βοηθήσουμε;"
+      },
+      "button": "Υποβολή αιτήματος"
+    },
+    "socials": {
+      "text": "Μη διστάσετε να επικοινωνήσετε μαζί μας με όποιον τρόπο σας εξυπηρετεί καλύτερα — είμαστε πάντα έτοιμοι να σας βοηθήσουμε.",
+      "phone": "357 9016 9445",
+      "list": [
+        {
+          "text": "Facebook",
+          "href": "/",
+          "icon": "/images/socials/fb.svg"
+        },
+        {
+          "text": "Instagram",
+          "href": "/",
+          "icon": "/images/socials/ig.svg"
+        },
+        {
+          "text": "LinkedIn",
+          "href": "/",
+          "icon": "/images/socials/link.svg"
+        }
+      ]
+    }
+  }
+}

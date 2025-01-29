@@ -1,0 +1,131 @@
+.projects {
+  margin-top: VW(200);
+
+  .title {
+    margin-bottom: VW(20);
+  }
+
+  .card {
+    width: 100vw;
+    height: VW(740);
+    display: flex;
+
+    &__image {
+      width: 50vw;
+      height: 100%;
+    }
+
+    .info {
+      position: relative;
+      width: 50vw;
+      display: flex;
+      align-items: center;
+      color: $c-white;
+
+      &__wrapper {
+        padding: 0 VW(20);
+      }
+
+      &__background {
+        position: absolute;
+        inset: 0;
+        z-index: -2;
+        overflow: hidden;
+
+        img {
+          filter: blur(10vw);
+          scale: 1.2;
+        }
+
+        &-blu1r {
+          content: "";
+          position: absolute;
+          z-index: 10;
+          inset: 0;
+          background-color: #ffffff30;
+          display: block;
+          // backdrop-filter: blur(10vw);
+        }
+      }
+
+      .list {
+        display: flex;
+        flex-direction: column;
+        gap: VW(4);
+        margin-bottom: VW(10);
+
+        &__item {
+          position: relative;
+          padding-bottom: VW(4);
+
+          .line {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: VW(1);
+            background-color: #ffffff60;
+          }
+        }
+      }
+
+      &__button {
+        margin-top: VW(20);
+      }
+    }
+  }
+
+  &__button {
+    width: 100vw;
+    height: VW(100);
+    padding-left: VW(20);
+    display: flex;
+    align-items: center;
+    background-color: $c-black;
+    color: $c-white;
+    clip-path: inset(0%);
+    transform: translateY(-1%);
+
+    position: relative;
+    transition: clip-path 1s 0.3s $ease-in-out-circ;
+
+    @include hover {
+      transition: clip-path 1s $ease-in-out-circ;
+      clip-path: inset(5% 2% 5% 0.5%);
+      .projects__button {
+        &-text {
+          transform: translateY(-1.22em);
+        }
+        &-top {
+          .projects__button-text {
+            transition-delay: 0.3s;
+          }
+        }
+      }
+    }
+
+    &-text {
+      text-shadow: 0 1.2em 0;
+      transition: transform 1s $ease-in-out-circ;
+      display: inline-block;
+
+      &-wrapper {
+        position: relative;
+        overflow-y: hidden;
+      }
+    }
+
+    &-top {
+      position: absolute;
+      top: 0;
+      right: 0;
+      transform: translate(100%, -60%);
+      @extend %body-text;
+      transition: transform 1s $ease-in-out-circ;
+
+      .projects__button-text {
+        transition-delay: 0.1s;
+      }
+    }
+  }
+}

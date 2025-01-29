@@ -1,7 +1,9 @@
 export async function generatePagesMetadata(endpoint) {
-  const data = await fetch(endpoint, {
+  const preparedData = await fetch(endpoint, {
     next: { revalidate: 120 },
   }).then((response) => response.json());
+
+  const data = preparedData.seo
 
   return {
     title: data.documentTitle,
