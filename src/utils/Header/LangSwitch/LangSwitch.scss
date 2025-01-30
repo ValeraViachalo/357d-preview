@@ -3,7 +3,7 @@
 
   &--active {
     .dropdown__head {
-        opacity: 0.8;
+        opacity: 0.8; 
 
       .icon {
         rotate: -180deg;
@@ -69,7 +69,7 @@
   &__link {
     padding: VW(7) VW(10) VW(5);
     border-radius: VW(6);
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition: background-color 0.3s ease, color 0.3s ease opacity 0.3s ease !important;
     
     @include hover {
       color: $c-black;

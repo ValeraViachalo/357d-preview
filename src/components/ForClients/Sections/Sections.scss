@@ -1,0 +1,37 @@
+.for-clients {
+  .section {
+    &-wrapper {
+      margin-top: VW(60);
+      display: flex;
+      flex-direction: column;
+      gap: VW(200);
+    }
+
+    .text-title {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+
+      .title {
+        width: 100%;
+        margin: VW(60) 0 VW(20);
+        padding-bottom: VW(7);
+        position: relative;
+
+        .line {
+          display: block;
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          height: VW(1);
+          background-color: $g-30;
+        }
+      }
+
+      .text {
+        width: VW(700);
+      }
+    }
+  }
+}

@@ -11,7 +11,7 @@ export const Button = ({ text, href, color="white", classes = "" }) => {
     })}>
       <p className="button__text-wrapper">
         {text.split("").map((word, index) => (
-          <span className="button__text" key={index} style={{ transitionDelay: `${index * 0.01}s` }}>
+          <span className="button__text" key={index} style={{ transitionDelay: `${(index / text.split("").length) * 0.06}s` }}>
             {word !== " " ? word : (<>&nbsp;</>)}
           </span>
         ))}

@@ -8,7 +8,7 @@ import { LinkAnim } from "@/utils/LinkAnim/LinkAnim";
 export default function ProjectsHome({ data }) {
   return (
     <section className="projects">
-      <h3 className="title container">{data.title}</h3>
+      <p className="title container">{data.title}</p>
 
       <div className="card-wrapper">
         {data.list.map((item, index) => (
@@ -17,7 +17,7 @@ export default function ProjectsHome({ data }) {
       </div>
       <Link href={data.button.href} className="projects__button">
         <div style={{ position: "relative" }}>
-          <h3 className="projects__button-wrapper">
+          <div className="projects__button-wrapper">
             <p className="projects__button-text-wrapper">
               {data.button.text.split("").map((letter, index) => (
                 <span
@@ -30,10 +30,10 @@ export default function ProjectsHome({ data }) {
               ))}
               {/* <span className="projects__button-text">{data.button.text}</span> */}
             </p>
-          </h3>
+          </div>
           <div className="projects__button-wrapper projects__button-top">
             <p className="projects__button-text-wrapper">
-              <span className="projects__button-text">
+              <span className="projects__button-text small-text">
                 {data.button.length}
               </span>
             </p>
@@ -62,7 +62,7 @@ const Card = ({ data }) => {
         <div className="info__wrapper">
           <div className="list">
             {data.list.map((item, index) => (
-              <div className="list__item" key={index}>
+              <div className="list__item small-text" key={index}>
                 <p dangerouslySetInnerHTML={{ __html: item }} />
                 <span className="line" />
               </div>

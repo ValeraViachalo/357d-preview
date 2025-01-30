@@ -1,22 +1,24 @@
-.services {
-  margin-top: VW(120);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  &__title {
-    width: VW(400);
-  }
-
-  .list {
+.home {
+  .services {
+    margin-top: VW(120);
     display: flex;
-    flex-direction: column;
-    gap: VW(15);
-    width: 50%;
+    align-items: center;
+    justify-content: space-between;
   
-    &__item {
-      border-bottom: .1vw solid #00000020;
-      padding-bottom: VW(15);
+    &__title {
+      width: VW(400);
+    }
+  
+    .list {
+      display: flex;
+      flex-direction: column;
+      gap: VW(15);
+      width: 50%;
+    
+      &__item {
+        border-bottom: .1vw solid #00000020;
+        padding-bottom: VW(15);
+      }
     }
   }
 }

@@ -15,9 +15,9 @@ export const LinkAnim = ({href, classes = "", text, icon = false, ...rest}) => {
           className="link-anim__icon"
         />
       )}
-      <p className="link-anim__text-wrapper">
+      <p className="link-anim__text-wrapper" aria-label={text}>
         {text.split("").map((word, index) => (
-          <span className="link-anim__text" key={index} style={{ transitionDelay: `${index * 0.01}s` }}>
+          <span className="link-anim__text" key={index} style={{ transitionDelay: `${(index / text.split("").length) * 0.06}s` }}>
             {word !== " " ? word : (<>&nbsp;</>)}
           </span>
         ))}

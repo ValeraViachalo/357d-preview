@@ -1,0 +1,96 @@
+.revealing-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+
+    .title {
+      width: 100%;
+      margin: VW(60) 0 VW(20);
+      padding-bottom: VW(7);
+      position: relative;
+
+      .line {
+        display: block;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: VW(1);
+        background-color: $g-30;
+      }
+    }
+
+    .revealing-item {
+      width: VW(700);
+      padding: VW(15) 0 0;
+
+      border-bottom: VW(1) solid $g-50;
+      // &:not(.revealing-item:nth-last-of-type(1)) {
+      //   border-bottom: VW(1) solid $g-50;
+      // }
+
+      &__active {
+        .head__line:nth-of-type(2) {
+          clip-path: inset(0 100% 0 0%) !important;
+        }
+      }
+    
+      .head {
+        padding: 0 VW(10) VW(15) 0;
+        cursor: pointer;
+        transition: opacity 0.5s ease;
+        position: relative;
+        gap: VW(30);
+
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+
+        &__line {
+          width: 100%;
+          height: max(VW(1.5), 1.5px);
+          background-color: $c-black;
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          pointer-events: none;
+    
+          transition-duration: 0.5s, 0.5s;
+          transition-property: rotate, clip-path;
+          transition-timing-function: $ease-in-out-cubic;
+    
+          &:nth-of-type(2) {
+            rotate: -90deg;
+            clip-path: inset(0 0 0 0%);
+          }
+    
+          &-wrapper {
+            min-width: VW(30);
+            min-height: VW(30);
+            position: relative;
+    
+            @include forTablet {
+              width: VW(30, $tablet);
+              height: VW(30, $tablet);
+            }
+    
+            @include forMobile {
+              width: VW(18, $mobile);
+              height: VW(18, $mobile);
+            }
+          }
+        }
+    
+      }
+
+      .body {
+        transition: height 0.7s $ease-in-out-expo;
+        overflow: hidden;
+
+        &__content {
+          padding-right: VW(70);
+        }
+        
+      }
+    }
+}

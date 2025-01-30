@@ -12,28 +12,33 @@
 .super-text {
   font-family: var(--pp-mori), sans-serif;
   font-size: 4.7vw;
-  font-style: bold;
   line-height: 90%;
   text-transform: uppercase;
   letter-spacing: normal;
 }
 
-%h3 {
+%h2 {
   font-family: var(--pp-mori), sans-serif;
-  font-size: VW(20);
-  font-style: bold;
+  font-size: VW(30);
   font-weight: normal;
   line-height: 105%;
   letter-spacing: normal;
 }
 
+
 %body-text {
   font-family: var(--pp-mori), sans-serif;
-  font-size: VW(14);
+  font-size: VW(20);
   font-style: normal;
   font-weight: 400;
   line-height: 110%;
   letter-spacing: normal;
+}
+
+.small-text {
+  font-family: var(--pp-mori), sans-serif;
+  font-size: VW(14);
+  line-height: 105%;
 }
 
 .upperCase {
@@ -41,7 +46,7 @@
 }
 
 %link {
-  @extend %body-text;
+  @extend .small-text;
 }
 
 .bold {
@@ -55,11 +60,16 @@
     @extend %h1;
   }
 
-  h3 {
-    @extend %h3;
+  h2 {
+    @extend %h2;
   }
 
   a {
     @extend %link;
+  }
+
+  input, textarea {
+    @extend .small-text;
+    // font: inherit;
   }
 }

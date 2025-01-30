@@ -79,6 +79,7 @@ export const ScrollProvider = ({ children, scrollBar = false, wrapper }) => {
       lenis.scrollTo(target, {
         duration: 1.7,
         easing: (x) => easeInOutExpo(x),
+        offset: -100
       });
     }
   };

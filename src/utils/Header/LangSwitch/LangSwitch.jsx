@@ -19,7 +19,7 @@ export const LangSwitch = () => {
     >
       <div className="dropdown__content">
         <Link href={isGrePath ? (engPath || "/") : grePath} className="dropdown__link">
-          <p>{isGrePath ? "Eng" : "Gre"}</p>
+          <p className="small-text">{isGrePath ? "Eng" : "Gre"}</p>
         </Link>
       </div>
     </DropDown>
@@ -52,7 +52,7 @@ const DropDown = ({ headText, children, ...rest }) => {
       onMouseLeave={handleMouseLeave}
       {...rest}
     >
-      <div className="dropdown__head">
+      <div className="dropdown__head small-text">
         {headText}{" "}
           <svg
             className="icon"

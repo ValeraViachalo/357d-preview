@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import "./ContactForm.scss";
 import * as Yup from "yup";
 import { Formik, Form, Field, ErrorMessage } from "formik";
@@ -9,15 +9,28 @@ import { useLanguageContent } from "@/lib/helpers/useLanguageContent";
 import { getFetchData } from "@/lib/helpers/DataFetch";
 import { LocaleContext } from "@/lib/providers/LocaleContext/context";
 import { URL_CONTACT } from "@/lib/helpers/DataUrls";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
-import { ContactTitle } from "@/lib/helpers/anim";
+import { anim, ContactTitle } from "@/lib/helpers/anim";
 
 const ContactForm = () => {
   const [submitted, setSubmitted] = useState(false);
   const [data, setData] = useState(null);
   const { lang } = useContext(LocaleContext);
+
+  const formRef = useRef();
+  
+  const { scrollYProgress } = useScroll({
+    target: data && formRef,
+    offset: ["100% 85%", "100% 30%"],
+    layoutEffect: true
+  });
+
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "22%"]);  // Move 100px up
+  const opacity = useTransform(scrollYProgress, [0, 1], [1, 0.4]);  // Smoother opacity transition
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 0.95]);
+  const filter = useTransform(scrollYProgress, [0.4, 1], ["blur(0vw)", "blur(0.3vw)"]);
   
   useEffect(() => {
     async function fetchData() {
@@ -50,8 +63,8 @@ const ContactForm = () => {
 
   return (
     data && (
-      <section className="contact-form">
-        <div className="contact-form__wrapper">
+      <section className="contact-form" id="contact" ref={formRef}>
+        <motion.div style={{ y, opacity, scale, filter }} className="contact-form__wrapper">
           <h1 className="contact-form__title upperCase">
             <span>{data.title.top}</span>
             <br />
@@ -82,7 +95,7 @@ const ContactForm = () => {
                   <ErrorMessage
                     name="email"
                     component="p"
-                    className="input-error-msg"
+                    className="input-error-msg small-text"
                   />
                 </div>
 
@@ -98,7 +111,7 @@ const ContactForm = () => {
                   <ErrorMessage
                     name="name"
                     component="p"
-                    className="input-error-msg"
+                    className="input-error-msg small-text"
                   />
                 </div>
 
@@ -114,7 +127,7 @@ const ContactForm = () => {
                   <ErrorMessage
                     name="phone"
                     component="p"
-                    className="input-error-msg"
+                    className="input-error-msg small-text"
                   />
                 </div>
 
@@ -150,7 +163,7 @@ const ContactForm = () => {
             )}
           </Formik>
           <div className="socials">
-            <p className="socials__text">
+            <p className="socials__text small-text">
               {data.socials.text}
             </p>
             <div className="number-link">
@@ -162,7 +175,7 @@ const ContactForm = () => {
               ))}
             </div>
           </div>
-        </div>
+        </motion.div>
       </section>
     )
   );
@@ -182,16 +195,15 @@ const AnimTitle = ({ titles }) => {
 
    return (
     <div className="title-anim__wrapper">
-      {titles.map((currTitle, i) => (
+      <AnimatePresence mode="popLayout">
         <motion.h1
           className="title-anim"
-          variants={ContactTitle}
-          animate={activeIndex === i ? "animate" : "exit"}
-          key={i}
+          {...anim(ContactTitle.variant2)}
+          key={titles[activeIndex]}
         >
-          {currTitle}
+          {titles[activeIndex]}
         </motion.h1>
-      ))}
+      </AnimatePresence>
     </div>
    );
 }
@@ -210,13 +222,13 @@ const SocialsButton = ({icon, href, text}) => {
         alt=""
         className="socials-button__icon"
       />
-      <h3 className="socials-button__text-wrapper">
+      <p className="socials-button__text-wrapper">
         {text.split("").map((word, index) => (
           <span className="socials-button__text" key={index} style={{ transitionDelay: `${index * 0.01}s` }}>
             {word !== " " ? word : (<>&nbsp;</>)}
           </span>
         ))}
-      </h3>
+      </p>
     </Link>
   );
 };

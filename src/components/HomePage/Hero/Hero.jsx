@@ -45,14 +45,14 @@ export const HeroHome = ({ data }) => {
         <div className="top">
           <Link href={adress.href}>
             <p
-              className="adress"
+              className="adress small-text"
               dangerouslySetInnerHTML={{ __html: adress.text }}
             />
           </Link>
           
           <Link href={link.href}>
             <p
-              className="top-link"
+              className="top-link small-text"
               dangerouslySetInnerHTML={{ __html: link.text }}
             />
           </Link>

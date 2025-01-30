@@ -11,7 +11,7 @@
       },
       {
         "name": "For clients",
-        "link": "/about"
+        "link": "/for-clients"
       },
       {
         "name": "Properties for Sale",
@@ -20,7 +20,7 @@
     ],
     "contact": {
       "name": "Contact",
-      "href": "#"
+      "href": "#contact"
     }
   },
   "gre": {
@@ -44,7 +44,7 @@
     ],
     "contact": {
       "name": "Επικοινωνία",
-      "href": "#"
+      "href": "#contact"
     }
   }
 }

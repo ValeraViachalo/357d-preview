@@ -7,7 +7,7 @@ export default function ServicesHome({ data }) {
       <h1 className="services__title">{data.title}</h1>
       <div className="list">
         {data.list.map((item, index) => (
-          <p key={index} className='list__item upperCase'>{item}</p>
+          <p key={index} className='list__item upperCase small-text'>{item}</p>
         ))}
       </div>
     </section>

@@ -1,49 +1,51 @@
-.about {
-  position: relative;
-  margin-top: VW(20);
-
-  .top {
-    .about {
-      &__text {
-        position: absolute;
-        top: VW(7);
-        width: VW(160);
-      }
-
-      &__title {
-        text-indent: VW(246);
-      } 
-    }
-  }
-
-  .bottom {
-    margin-top: VW(100);
-    display: flex;
-    gap: VW(20);
-
-    .card {
-      width: 100%;
-
-      &__title {
-        position: relative;
-        padding-bottom: VW(2);
-        margin-bottom: VW(20);
-
-        .line {
-          display: block;
+.home {
+  .about {
+    position: relative;
+    margin-top: VW(20);
+  
+    .top {
+      .about {
+        &__text {
           position: absolute;
-          bottom: 0;
-          left: 0;
-          right: 0;
-          background-color: $c-black;
-          height: VW(1);
-          opacity: 0.1;
+          top: VW(7);
+          width: VW(160);
         }
+  
+        &__title {
+          text-indent: VW(246);
+        } 
       }
-
-      &__image {
-        width: auto;
-        height: VW(140);
+    }
+  
+    .bottom {
+      margin-top: VW(100);
+      display: flex;
+      gap: VW(20);
+  
+      .card {
+        width: 100%;
+  
+        &__title {
+          position: relative;
+          padding-bottom: VW(2);
+          margin-bottom: VW(20);
+  
+          .line {
+            display: block;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: $c-black;
+            height: VW(1);
+            opacity: 0.1;
+          }
+        }
+  
+        &__image {
+          width: auto;
+          height: VW(140);
+        }
       }
     }
   }

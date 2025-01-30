@@ -8,7 +8,7 @@ export default function AboutHome({ data }) {
   return (
     <section className="about container">
       <div className="top">
-        <h3 className="about__text">{top.text}</h3>
+        <p className="about__text">{top.text}</p>
         <h1 className="about__title">
         {top.title}
         </h1>
@@ -17,7 +17,7 @@ export default function AboutHome({ data }) {
         {data.bottom.list.map((item, index) => (
           <div className="card" key={index}>
             <div className="card__title">
-              <h3>{item.text}</h3>
+              <p>{item.text}</p>
               <span className="line" />
             </div>
             <Image className="card__image" alt='about icon' src={item.image} width={100} height={100}/>

@@ -1,57 +1,59 @@
-.hero {
-  margin-top: VW(60);
-
-  .logo {
-    grid-column: 1/6;
-    position: absolute;
-    // height: VW(142);
-    width: VW(577);
-    z-index: 1000000;
-    
-
-    &__image {
-      width: 100%;
-      height: 100%;
-    }
-  }
-
-  .top {
-    grid-column: 6/10;
-    height: VW(130);
-
-    display: flex;
-    flex-direction: column;
-
-    .adress {
-      margin-top: VW(20);
-      transition: opacity 0.3s ease;
-
-      @include hover {
-        opacity: 0.5;
+.home {
+  .hero {
+    margin-top: VW(60);
+  
+    .logo {
+      grid-column: 1/6;
+      position: absolute;
+      // height: VW(142);
+      width: VW(577);
+      z-index: 1000000;
+      
+  
+      &__image {
+        width: 100%;
+        height: 100%;
       }
     }
-    
-    &-link {
-      margin-top: VW(20);
-      text-decoration: underline;
-
-      transition: opacity 0.3s ease;
-
-      @include hover {
-        opacity: 0.5;
+  
+    .top {
+      grid-column: 6/10;
+      height: VW(130);
+  
+      display: flex;
+      flex-direction: column;
+  
+      .adress {
+        margin-top: VW(20);
+        transition: opacity 0.3s ease;
+  
+        @include hover {
+          opacity: 0.5;
+        }
+      }
+      
+      &-link {
+        margin-top: VW(20);
+        text-decoration: underline;
+  
+        transition: opacity 0.3s ease;
+  
+        @include hover {
+          opacity: 0.5;
+        }
       }
     }
-  }
-
-  .background {
-    height: VW(700);
-    overflow: hidden;
-
-    &__item {
-      // height: VW(1000);
-      aspect-ratio: 16/9;
-      width: 100%;
-      height: 100%;
+  
+    .background {
+      height: VW(700);
+      overflow: hidden;
+  
+      &__item {
+        // height: VW(1000);
+        aspect-ratio: 16/9;
+        width: 100%;
+        height: 100%;
+      }
     }
   }
 }

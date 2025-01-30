@@ -1,9 +1,11 @@
 .contact-form {
-  height: VW(1000);
+  // height: VW(1000);
+  padding: VW(60) 0;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: $g-30;
+  overflow: hidden;
 
   &__wrapper {
     background-color: $c-white;
@@ -43,7 +45,6 @@
       border: none;
       border-bottom: VW(1) solid $g-70;
       color: $c-black;
-      font: 1em sans-serif;
       opacity: 50%;
       
 
@@ -147,7 +148,10 @@
       text-shadow: 0 1.2em 0;
       transition: transform 1s $ease-in-out-circ;
       display: inline-block;
+      @extend %body-text;
+      
       &-wrapper {
+        @extend %body-text;
         height: 1.1em;
         overflow-y: hidden;
         display: inline-block;

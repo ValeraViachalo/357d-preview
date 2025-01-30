@@ -35,9 +35,9 @@ export default function Footer() {
     data && (
       <footer className="footer">
         <div className="container grid">
-          <h1 className="footer__title">{data?.title}</h1>
+          <h1 className="footer__title small-text">{data?.title}</h1>
 
-          <div className="footer__sing-up">
+          <div className="footer__sing-up small-text">
             {data?.signUp.text}
             <Button
               text={data?.signUp.button.text}
@@ -90,7 +90,7 @@ export default function Footer() {
               ))}
             </div>
             <div className="contact-us__location">
-              <p dangerouslySetInnerHTML={{ __html: data?.contacts?.adress.text }} />
+              <p className="small-text" dangerouslySetInnerHTML={{ __html: data?.contacts?.adress.text }} />
               <LinkAnim
                 target="_blank"
                 text={data?.contacts?.adress.button.text}
