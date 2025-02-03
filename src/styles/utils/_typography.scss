@@ -11,8 +11,9 @@
 
 .super-text {
   font-family: var(--pp-mori), sans-serif;
-  font-size: 4.7vw;
-  line-height: 90%;
+  font-size: VW(125);
+  line-height: 80%;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: normal;
 }

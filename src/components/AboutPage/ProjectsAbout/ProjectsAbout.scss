@@ -1,0 +1,29 @@
+.about {
+  .projects {
+    margin-top: VW(200);
+    display: flex;
+    justify-content: space-between;
+
+    &__list {
+      display: flex;
+      gap: VW(100);
+
+      .card {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: VW(210);
+        height: VW(320);
+
+        .top  {
+          gap: VW(20);
+        }
+
+        &__image {
+          width: VW(160);
+          height: VW(160);
+        }
+      }
+    }
+  }
+}

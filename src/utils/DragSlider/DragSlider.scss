@@ -1,0 +1,14 @@
+.slider-wrap {
+  overflow-x: hidden;
+  width: 100%;
+  cursor: grab;
+  &:active {
+    cursor: grabbing;
+  }
+
+  .slider {
+    display: flex;
+    justify-content: space-between;
+    
+  }
+}

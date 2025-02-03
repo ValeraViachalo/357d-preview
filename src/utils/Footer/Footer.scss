@@ -1,6 +1,16 @@
 .footer {
   // height: VW(300);
   padding: VW(25) 0 VW(25);
+  position: relative;
+
+  &::after {
+    content: "";
+    display: block;
+    position: absolute;
+    inset: 35% 0;
+    transform: translateY(-160%);
+    // background-color: red;
+  }
 
   .container {
     row-gap: VW(50);

@@ -32,6 +32,7 @@
       &__active {
         .head__line:nth-of-type(2) {
           clip-path: inset(0 100% 0 0%) !important;
+          transition-delay: 0s !important;
         }
       }
     
@@ -58,6 +59,7 @@
           transition-duration: 0.5s, 0.5s;
           transition-property: rotate, clip-path;
           transition-timing-function: $ease-in-out-cubic;
+          transition-delay: 0.2s;
     
           &:nth-of-type(2) {
             rotate: -90deg;

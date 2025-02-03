@@ -1,0 +1,38 @@
+.about {
+  .approach {
+    margin-top: VW(20);
+
+    .section {
+      margin-top: VW(60);
+
+      .title {
+        width: 100%;
+        margin-bottom: VW(20);
+        padding-bottom: VW(7);
+        position: relative;
+  
+        .line {
+          display: block;
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          height: VW(1);
+          background-color: $g-30;
+        }
+      }
+
+      .content {
+        display: flex;
+        justify-content: space-between;
+        gap: VW(20);
+
+        &__image {
+          max-width: VW(680);
+          min-width: VW(680);
+          height: auto;
+        }
+      }
+    }
+  }
+}

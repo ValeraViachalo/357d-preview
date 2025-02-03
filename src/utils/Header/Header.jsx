@@ -19,6 +19,8 @@ export default function Header() {
   const [isTopScroll, setIsTopScroll] = useState(true);
   const path = usePathname();
 
+  const isWhiteHeader = path.includes("-paths")
+
   const isGrePath = path.startsWith("/gre");
 
   useEffect(() => {
@@ -48,7 +50,7 @@ export default function Header() {
 
   return (
     data && (
-      <header className={clsx("header grid", { "header--bg": !isTopScroll })}>
+      <header className={clsx("header grid", { "header--bg": !isTopScroll, "header--white": isWhiteHeader })}>
         <Link href={isGrePath ? "/gre" : "/"} className="header__logo">
           <AnimatePresence mode="wait">
             {path === "/" || path === "/gre" ? (

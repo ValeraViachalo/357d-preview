@@ -6,7 +6,6 @@ import "./RevealingSection.scss";
 
 export const RevealingSection = ({ data }) => {
   const [openedIndex, setOpenedIndex] = useState(false);
-  console.log(data);
 
   return (
     <div className="revealing-section">

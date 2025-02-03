@@ -3,7 +3,7 @@ import React from 'react'
 import './LinkAnim.scss'
 import Image from 'next/image'
 
-export const LinkAnim = ({href, classes = "", text, icon = false, ...rest}) => {
+export const LinkAnim = ({href, classes = "", text, icon = false, secondaryItem = false, ...rest}) => {
   return (
     <Link href={href} {...rest} className={"link-anim " + classes}>
       {icon && (
@@ -14,6 +14,11 @@ export const LinkAnim = ({href, classes = "", text, icon = false, ...rest}) => {
           alt=""
           className="link-anim__icon"
         />
+      )}
+      {secondaryItem && (
+        <p className="link-anim__text-wrapper" aria-label={text}>
+          {secondaryItem}
+        </p>
       )}
       <p className="link-anim__text-wrapper" aria-label={text}>
         {text.split("").map((word, index) => (
