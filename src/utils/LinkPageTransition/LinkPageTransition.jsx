@@ -1,7 +1,6 @@
 "use client";
 import Link from "next/link";
-import React, { useContext } from "react";
-import Image from "next/image";
+import React, { useContext, useState } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import { TransitionContext } from "@/lib/providers/TransitionProvider/TransitionProvider";
 
@@ -11,6 +10,7 @@ export const LinkPageTransition = ({ href, children, ...rest }) => {
   const router = useRouter();
   const pathname = usePathname();
   const { setIsTransitionActive } = useContext(TransitionContext);
+  const [isLoading, setIsLoading] = useState(false);
 
   const isExternalLink = (url) => {
     return (
@@ -23,32 +23,60 @@ export const LinkPageTransition = ({ href, children, ...rest }) => {
 
   const handleTransition = async (e) => {
     if (isExternalLink(href)) {
-      // For external links, open in a new tab
       window.open(href, "_blank", "noopener,noreferrer");
-      e.preventDefault(); // Prevent the default link behavior
+      e.preventDefault();
       return;
     }
 
-    // For internal links
     e.preventDefault();
 
-    // Check if the target href is different from the current pathname
-    if (href !== pathname) {
-      const body = document.querySelector("#page-transition");
-      body.classList.add("page-transition");
+    if (href === pathname || isLoading) {
+      return;
+    }
 
-      try {
-        await setIsTransitionActive(true);
-        await sleep(500);
-        await router.push(href);
+    const body = document.querySelector("#page-transition");
+    if (!body) {
+      console.error("#page-transition element not found");
+      router.push(href);
+      return;
+    }
+
+    setIsLoading(true);
+    body.classList.add("page-transition");
+
+    try {
+      await setIsTransitionActive(true);
+      await sleep(500); // Initial transition effect
+
+      // Start navigation
+      const navigationPromise = router.push(href);
+      
+      // Setup a timeout for maximum waiting time
+      const timeoutPromise = sleep(2000);
+      
+      // Wait for either navigation to complete or timeout
+      await Promise.race([
+        navigationPromise,
+        timeoutPromise
+      ]);
+
+      // Add a small delay to ensure DOM is ready
+      await sleep(100);
+
+      // Check if the pathname has actually changed
+      if (window.location.pathname === href || window.location.pathname === href + '/') {
+        // Successfully navigated
+        await sleep(400); // Final transition effect
+      } else {
+        // If navigation hasn't completed, wait a bit longer
         await sleep(1000);
-      } finally {
-        body.classList.remove("page-transition");
-        setIsTransitionActive(false);
       }
-    } else {
-      // If it's the same page, just prevent the default behavior
-      console.log("Already on this page");
+    } catch (error) {
+      console.error('Navigation error:', error);
+    } finally {
+      body.classList.remove("page-transition");
+      setIsTransitionActive(false);
+      setIsLoading(false);
     }
   };
 
@@ -61,7 +89,12 @@ export const LinkPageTransition = ({ href, children, ...rest }) => {
   }
 
   return (
-    <Link href={href} {...rest} onClick={handleTransition}>
+    <Link 
+      href={href} 
+      {...rest} 
+      onClick={handleTransition}
+      className={`${rest.className || ''} ${isLoading ? 'pointer-events-none' : ''}`}
+    >
       {children}
     </Link>
   );

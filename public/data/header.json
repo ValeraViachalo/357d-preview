@@ -35,11 +35,11 @@
       },
       {
         "name": "Για πελάτες",
-        "link": "/about"
+        "link": "/for-clients"
       },
       {
         "name": "Ακίνητα προς πώληση",
-        "link": "/about"
+        "link": "/"
       }
     ],
     "contact": {
