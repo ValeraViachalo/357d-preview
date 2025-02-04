@@ -13,6 +13,7 @@ import clsx from "clsx";
 import { AnimatePresence, motion } from "framer-motion";
 import { ease } from "@/lib/helpers/ease";
 import { anim, textPresence } from "@/lib/helpers/anim";
+import { LinkPageTransition } from "../LinkPageTransition/LinkPageTransition";
 
 export default function Header() {
   const [data, setData] = useState(null);
@@ -51,7 +52,7 @@ export default function Header() {
   return (
     data && (
       <header className={clsx("header grid", { "header--bg": !isTopScroll, "header--white": isWhiteHeader })}>
-        <Link href={isGrePath ? "/gre" : "/"} className="header__logo">
+        <LinkPageTransition href={isGrePath ? "/gre" : "/"} className="header__logo">
           <AnimatePresence mode="wait">
             {path === "/" || path === "/gre" ? (
               isTopScroll ? (
@@ -60,7 +61,7 @@ export default function Header() {
                 </motion.p>
               ) : (
                 <motion.div
-                  layoutId="header_logo"
+                  layoutId={`header_logo-${path}`}
                   transition={{
                     layout: {
                       duration: 0.4,
@@ -78,7 +79,7 @@ export default function Header() {
               </div>
             )}
           </AnimatePresence>
-        </Link>
+        </LinkPageTransition>
         <nav className="header__list">
           {data.list.map((currLink, index) => (
             <LinkAnim

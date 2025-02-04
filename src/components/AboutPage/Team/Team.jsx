@@ -1,12 +1,32 @@
-import React from "react";
+"use client";
+
+import React, { useRef } from "react";
 import { DragSlider } from "../../../utils/DragSlider/DragSlider";
 
 import "./Team.scss";
 import Image from "next/image";
+import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 
 export default function TeamAbout({ data }) {
+  const teamImage = useRef()
+
+  const { scrollYProgress } = useScroll({
+    target: data?.secondaryImage?.active && teamImage,
+    offset: ["0% 100%", "100% 0%"],
+    layoutEffect: true,
+  });
+
+  const scrollSpring = useSpring(scrollYProgress, {
+    stiffness: 200,
+    damping: 100,
+  });
+
+  const filter = useTransform(scrollSpring, [0, 0.3], ["blur(1vw)","blur(0vw)"]);
+  
+  const y = useTransform(scrollYProgress, [0, 1], ["-10%","20%"]);
+
   return (
-    <section className="team" id="team">
+    <section className="team" id="team" >
       <div className="team__title container">
         {data?.title}
         {data?.list.length && (
@@ -34,14 +54,17 @@ export default function TeamAbout({ data }) {
           ))}
       </DragSlider>
       {data?.secondaryImage?.active && (
-        <div className="team__secondary-image-wrapper container">
-          <Image
-            src={data?.secondaryImage.image}
-            width={1150}
-            height={1150}
-            alt="team big image"
-            className="team__secondary-image"
-          />
+        <div className="team__secondary container">
+          <div className="team__secondary-image-wrapper" ref={teamImage} >
+            <motion.img
+              src={data?.secondaryImage.image}
+              width={1150}
+              height={1150}
+              style={{ filter, y }}
+              alt="team big image"
+              className="team__secondary-image"
+            />
+          </div>
         </div>
       )}
     </section>

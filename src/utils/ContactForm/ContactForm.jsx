@@ -9,7 +9,14 @@ import { useLanguageContent } from "@/lib/helpers/useLanguageContent";
 import { getFetchData } from "@/lib/helpers/DataFetch";
 import { LocaleContext } from "@/lib/providers/LocaleContext/context";
 import { URL_CONTACT } from "@/lib/helpers/DataUrls";
-import { AnimatePresence, motion, useScroll, useTransform } from "framer-motion";
+import {
+  AnimatePresence,
+  motion,
+  useMotionValue,
+  useMotionValueEvent,
+  useScroll,
+  useTransform,
+} from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { anim, ContactTitle } from "@/lib/helpers/anim";
@@ -17,21 +24,30 @@ import { anim, ContactTitle } from "@/lib/helpers/anim";
 const ContactForm = () => {
   const [submitted, setSubmitted] = useState(false);
   const [data, setData] = useState(null);
+  const [isAnitaionFinished, setIsAnitaionFinished] = useState(false)
   const { lang } = useContext(LocaleContext);
 
   const formRef = useRef();
-  
+
   const { scrollYProgress } = useScroll({
     target: data && formRef,
     offset: ["100% 85%", "100% 30%"],
-    layoutEffect: true
+    layoutEffect: true,
   });
 
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "22%"]);  // Move 100px up
-  const opacity = useTransform(scrollYProgress, [0, 1], [1, 0.4]);  // Smoother opacity transition
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "22%"]); // Move 100px up
+  const opacity = useTransform(scrollYProgress, [0, 1], [1, 0.4]); // Smoother opacity transition
   const scale = useTransform(scrollYProgress, [0, 1], [1, 0.95]);
-  const filter = useTransform(scrollYProgress, [0.4, 1], ["blur(0vw)", "blur(0.3vw)"]);
-  
+  const filter = useTransform(
+    scrollYProgress,
+    [0.4, 1],
+    ["blur(0vw)", "blur(0.3vw)"]
+  );
+
+  useMotionValueEvent(scrollYProgress, "change", (latest) => {
+    setIsAnitaionFinished(latest > 0.5);
+  });
+
   useEffect(() => {
     async function fetchData() {
       try {
@@ -61,14 +77,21 @@ const ContactForm = () => {
     resetForm();
   };
 
+  
+
   return (
     data && (
-      <section className="contact-form" id="contact" ref={formRef}>
-        <motion.div style={{ y, opacity, scale, filter }} className="contact-form__wrapper">
+      <section className={classNames("contact-form", {
+        "contact-form--inactive": isAnitaionFinished
+      })} id="contact" ref={formRef}>
+        <motion.div
+          style={{ y, opacity, scale, filter }}
+          className="contact-form__wrapper"
+        >
           <h1 className="contact-form__title upperCase">
             <span>{data.title.top}</span>
             <br />
-              <AnimTitle titles={data.title.middle} />
+            <AnimTitle titles={data.title.middle} />
             <span>{data.title.bottom}</span>
           </h1>
           <Formik
@@ -143,7 +166,7 @@ const ContactForm = () => {
                 <button
                   type="submit"
                   className={classNames("submit-button button button--black", {
-                    "submit-button--disabled": !isValid || !dirty
+                    "submit-button--disabled": !isValid || !dirty,
                   })}
                   disabled={!isValid || !dirty}
                 >
@@ -163,15 +186,22 @@ const ContactForm = () => {
             )}
           </Formik>
           <div className="socials">
-            <p className="socials__text small-text">
-              {data.socials.text}
-            </p>
+            <p className="socials__text small-text">{data.socials.text}</p>
             <div className="number-link">
-              <SocialsButton icon="/images/socials/phone.svg" text={data.socials.phone} href={`tel:${data.socials.phone}`} />
+              <SocialsButton
+                icon="/images/socials/phone.svg"
+                text={data.socials.phone}
+                href={`tel:${data.socials.phone}`}
+              />
             </div>
             <div className="list">
               {data.socials.list.map((currI, i) => (
-                <SocialsButton href={currI.href} text={currI.text} icon={currI.icon} key={i} />
+                <SocialsButton
+                  href={currI.href}
+                  text={currI.text}
+                  icon={currI.icon}
+                  key={i}
+                />
               ))}
             </div>
           </div>
@@ -186,35 +216,41 @@ const AnimTitle = ({ titles }) => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setActiveIndex(
-        (prevIndex) => (prevIndex + 1) % titles.length
-      );
+      setActiveIndex((prevIndex) => (prevIndex + 1) % titles.length);
     }, 2000);
     return () => clearInterval(interval);
   });
 
-   return (
+  return (
     <div className="title-anim__wrapper">
       <AnimatePresence mode="popLayout">
-        <motion.h1
+        {/* <motion.h1
           className="title-anim"
           {...anim(ContactTitle.variant2)}
           key={titles[activeIndex]}
         >
           {titles[activeIndex]}
+        </motion.h1> */}
+        <motion.h1 className="title-anim" key={titles[activeIndex]} aria-label={titles[activeIndex]}>
+          {titles[activeIndex].split("").map((currL, i) => (
+            <motion.span
+              key={i}
+              style={{ display: "inline-block" }}
+              {...anim(ContactTitle.variant3)}
+              custom={((i / titles[activeIndex].split("").length) * 0.08)}
+            >
+              {currL}
+            </motion.span>
+          ))}
         </motion.h1>
       </AnimatePresence>
     </div>
-   );
-}
+  );
+};
 
-const SocialsButton = ({icon, href, text}) => {
+const SocialsButton = ({ icon, href, text }) => {
   return (
-    <Link
-      href={href}
-      target="_blank"
-      className="socials-button"
-    >
+    <Link href={href} target="_blank" className="socials-button">
       <Image
         width={17}
         height={17}
@@ -224,8 +260,12 @@ const SocialsButton = ({icon, href, text}) => {
       />
       <p className="socials-button__text-wrapper">
         {text.split("").map((word, index) => (
-          <span className="socials-button__text" key={index} style={{ transitionDelay: `${index * 0.01}s` }}>
-            {word !== " " ? word : (<>&nbsp;</>)}
+          <span
+            className="socials-button__text"
+            key={index}
+            style={{ transitionDelay: `${index * 0.01}s` }}
+          >
+            {word !== " " ? word : <>&nbsp;</>}
           </span>
         ))}
       </p>

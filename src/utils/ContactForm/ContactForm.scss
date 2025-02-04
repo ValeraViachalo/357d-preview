@@ -7,6 +7,10 @@
   background-color: $g-30;
   overflow: hidden;
 
+  &--inactive {
+    pointer-events: none;
+  }
+
   &__wrapper {
     background-color: $c-white;
     padding: VW(20);

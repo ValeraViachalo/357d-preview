@@ -6,13 +6,18 @@
   z-index: 10000;
   width: 1vw;
   mix-blend-mode: difference;
+  transition: right 0.4s cubic-bezier(0.08, 0.99, 0.37, 1);
+
+  &:active {
+    right: 0.1vw;
+  }
 
   @include hover {
     .progressBar__bar {
-      width: .6vw;
+      width: 0.6vw;
     }
   }
-  
+
   &__bar {
     position: absolute;
     right: 0;
@@ -21,7 +26,7 @@
     background-color: rgb(170, 130, 130);
     // transform-origin: center;
     transform: translateY(-100%);
-    transition: width .4s cubic-bezier(.08,.99,.37,1);
+    transition: width 0.4s cubic-bezier(0.08, 0.99, 0.37, 1);
   }
 
   &__range {
@@ -32,7 +37,7 @@
     rotate: 90deg;
     width: 100vh;
     height: 1vw;
-    transform: translate(-1%, -30%);
+    transform: translate(-1%, -70%);
     transform-origin: left;
     opacity: 0;
     cursor: grab;

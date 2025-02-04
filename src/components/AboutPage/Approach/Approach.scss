@@ -28,9 +28,16 @@
         gap: VW(20);
 
         &__image {
+          width: VW(680);
           max-width: VW(680);
           min-width: VW(680);
-          height: auto;
+          overflow: hidden;
+          
+          &-item {
+            max-width: VW(680);
+            min-width: VW(680);
+            height: auto;
+          }
         }
       }
     }

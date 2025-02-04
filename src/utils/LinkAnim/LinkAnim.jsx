@@ -2,10 +2,11 @@ import Link from 'next/link'
 import React from 'react'
 import './LinkAnim.scss'
 import Image from 'next/image'
+import { LinkPageTransition } from '../LinkPageTransition/LinkPageTransition'
 
 export const LinkAnim = ({href, classes = "", text, icon = false, secondaryItem = false, ...rest}) => {
   return (
-    <Link href={href} {...rest} className={"link-anim " + classes}>
+    <LinkPageTransition href={href} {...rest} className={"link-anim " + classes}>
       {icon && (
         <Image
           width={17}
@@ -27,6 +28,6 @@ export const LinkAnim = ({href, classes = "", text, icon = false, secondaryItem 
           </span>
         ))}
       </p>
-    </Link>
+    </LinkPageTransition>
   )
 }

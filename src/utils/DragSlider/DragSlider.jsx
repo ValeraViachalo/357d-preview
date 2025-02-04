@@ -4,6 +4,7 @@ import React, { useRef, useEffect, useState } from "react";
 import { motion, useMotionValue } from "framer-motion";
 
 import './DragSlider.scss'
+import { ease } from "@/lib/helpers/ease";
 
 const SliderWrap = ({
   children,
@@ -37,7 +38,7 @@ const SliderWrap = ({
 export const DragSlider = ({
   children,
   bounceStiffness = 1000,
-  bounceDamping = 100
+  bounceDamping = 140
 }) => {
   const ref = useRef();
   const x = useMotionValue(0);

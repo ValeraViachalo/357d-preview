@@ -1,0 +1,19 @@
+.page-transition {
+  animation: pageTransition 1.6s ease forwards;
+  transform-origin: top;
+}
+
+@keyframes pageTransition {
+  0% {
+    opacity: 1;
+    filter: blur(0vw);
+  }
+  50% {
+    opacity: 0;
+    filter: blur(1vw)
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0vw);
+  }
+}

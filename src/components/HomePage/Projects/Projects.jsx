@@ -2,8 +2,7 @@ import React from "react";
 import "./Projects.scss";
 import Image from "next/image";
 import { Button } from "@/utils/Button/Button";
-import Link from "next/link";
-import { LinkAnim } from "@/utils/LinkAnim/LinkAnim";
+import { LinkPageTransition } from "@/utils/LinkPageTransition/LinkPageTransition";
 
 export default function ProjectsHome({ data }) {
   return (
@@ -15,7 +14,7 @@ export default function ProjectsHome({ data }) {
           <Card key={index} data={item} />
         ))}
       </div>
-      <Link href={data.button.href} className="projects__button">
+      <LinkPageTransition href={data.button.href} className="projects__button">
         <div style={{ position: "relative" }}>
           <div className="projects__button-wrapper">
             <p className="projects__button-text-wrapper">
@@ -33,13 +32,13 @@ export default function ProjectsHome({ data }) {
           </div>
           <div className="projects__button-wrapper projects__button-top">
             <p className="projects__button-text-wrapper">
-              <span className="projects__button-text small-text">
+              <span className="projects__button-text">
                 {data.button.length}
               </span>
             </p>
           </div>
         </div>
-      </Link>
+      </LinkPageTransition>
     </section>
   );
 }

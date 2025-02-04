@@ -25,9 +25,6 @@
       padding: VW(15) 0 0;
 
       border-bottom: VW(1) solid $g-50;
-      // &:not(.revealing-item:nth-last-of-type(1)) {
-      //   border-bottom: VW(1) solid $g-50;
-      // }
 
       &__active {
         .head__line:nth-of-type(2) {
@@ -46,6 +43,10 @@
         display: flex;
         justify-content: space-between;
         align-items: flex-start;
+
+        @include hover {
+          opacity: 0.4;
+        }
 
         &__line {
           width: 100%;

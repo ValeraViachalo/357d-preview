@@ -109,6 +109,8 @@
         text-shadow: 0 1.2em 0;
         transition: transform 1s $ease-in-out-circ;
         display: inline-block;
+
+        @extend %body-text;
   
         &-wrapper {
           position: relative;
@@ -121,11 +123,11 @@
         top: 0;
         right: 0;
         transform: translate(100%, -60%);
-        @extend %body-text;
         transition: transform 1s $ease-in-out-circ;
   
         .projects__button-text {
           transition-delay: 0.1s;
+          @extend .small-text;
         }
       }
     }

@@ -1,19 +1,32 @@
-import React from "react";
+"use client"
+import React, { useRef } from "react";
 
 import "./Hero.scss";
 import Image from "next/image";
 import { LinkAnim } from "@/utils/LinkAnim/LinkAnim";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 export default function HeroAbout({ data }) {
+  const heroRef = useRef(null);
+
+  const { scrollYProgress } = useScroll({
+    target: data && heroRef,
+    offset: ["0% 0%", "100% 0%"],
+    layoutEffect: true,
+  });
+
+  const y = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
+
   return (
-    <section className="hero">
+    <section className="hero" ref={heroRef}>
       {data?.background && (
-        <Image
-          src={data?.background}
-          fill
-          alt="about"
-          className="hero__background"
-        />
+        <motion.div className="hero__background" style={{ y }}>
+          <Image
+            src={data?.background}
+            fill
+            alt="about"
+          />
+        </motion.div>
       )}
       <div className="hero-wrapper">
         <div className="top">

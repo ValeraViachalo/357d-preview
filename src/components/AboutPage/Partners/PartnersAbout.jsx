@@ -22,6 +22,7 @@ export default function PartnersAbout({ data }) {
               text={currLink.text}
               href={currLink.href}
               classes="item"
+              key={i}
             />
           ))}
         </div>

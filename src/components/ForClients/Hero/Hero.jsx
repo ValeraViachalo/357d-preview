@@ -5,6 +5,7 @@ import './Hero.scss'
 import { LinkAnim } from '@/utils/LinkAnim/LinkAnim'
 import Image from 'next/image'
 import { motion, useScroll, useTransform } from 'framer-motion';
+import { anim, textPresence } from '@/lib/helpers/anim';
 
 export default function HeroClients({ data }) {
   const hero = useRef();
@@ -22,7 +23,7 @@ export default function HeroClients({ data }) {
       <div className="container">
         <div className="links">
           {data.links.map((currLink, i) => (
-            <h1 className="links__item" key={i}>
+            <motion.h1 className="links__item" key={i} {...anim(textPresence)} custom={(i * 0.06)}>
               {currLink.id}
               <LinkAnim
                 text={currLink.title}
@@ -30,7 +31,7 @@ export default function HeroClients({ data }) {
                 data-use-scroll={currLink.href}
                 classes="link"
               />
-            </h1>
+            </motion.h1>
           ))}
         </div>
       </div>

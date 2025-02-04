@@ -1,12 +1,11 @@
 import localFont from "next/font/local";
 import "@/styles/reset.scss";
-import {
-  ScrollProvider,
-} from "@/lib/providers/ScrollProvider/ScrollProvider";
+import { ScrollProvider } from "@/lib/providers/ScrollProvider/ScrollProvider";
 import Header from "@/utils/Header/Header";
 import Footer from "@/utils/Footer/Footer";
 import { LocaleProvider } from "@/lib/providers/LocaleContext/LocaleContext";
 import ContactForm from "@/utils/ContactForm/ContactForm";
+import { TransitionProvider } from "@/lib/providers/TransitionProvider/TransitionProvider";
 
 const ppMori = localFont({
   src: [
@@ -35,10 +34,14 @@ export default function RootLayout({ children }) {
       <body className={`${ppMori.variable} body`}>
         <ScrollProvider scrollBar></ScrollProvider>
         <LocaleProvider>
-          <Header />
-          {children}
-          <ContactForm />
-          <Footer />
+          <TransitionProvider>
+            <Header />
+            <main id="page-transition">
+              {children}
+              <ContactForm />
+              <Footer />
+            </main>
+          </TransitionProvider>
         </LocaleProvider>
       </body>
     </html>
