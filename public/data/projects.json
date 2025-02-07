@@ -1,0 +1,474 @@
+{
+  "en": {
+    "seo": {
+      "documentTitle": "Projects | 357D",
+      "documentKeywords": "nextjs, next.js, creative, creative development, framer-motion",
+      "documentDescription": "the ideal template for creative work, featuring stunning components and fluid functionality on nextjs.",
+      "documentImage": "/images/screenshot.png"
+    },
+    "title": "Projects",
+    "filter": {
+      "topTitle": "Filter properties",
+      "type": {
+        "title": "Type",
+        "reset": {
+          "text": "Any",
+          "slug": ""
+        },
+        "filters": [
+          {
+            "text": "Residence",
+            "slug": "residence"
+          },
+          {
+            "text": "Apartment",
+            "slug": "apartment"
+          },
+          {
+            "text": "Villa",
+            "slug": "villa"
+          }
+        ]
+      },
+      "status": {
+        "title": "Status",
+        "reset": {
+          "text": "Any",
+          "slug": ""
+        },
+        "filters": [
+          {
+            "text": "Ready to move in",
+            "slug": "ready-to-move-in"
+          },
+          {
+            "text": "Under construction",
+            "slug": "under-construction"
+          },
+          {
+            "text": "Investors call",
+            "slug": "investors-call"
+          }
+        ]
+      },
+      "budget": {
+        "title": "Budget,€k"
+      },
+      "clear": {
+        "title": "Clear"
+      }
+    },
+    "list": [
+      {
+        "image": "/images/projects/works-1.jpg",
+        "title": "GOOD NOOK",
+        "slug": "good-nook",
+        "description": {
+          "address": "1 Panepistimiou Blvd, <br /> Aglantzia 2109, Cyprus",
+          "type": {
+            "text": "Residence",
+            "slug": "residence"
+          },
+          "status": {
+            "text": "Ready to move in",
+            "slug": "ready-to-move-in"
+          },
+          "about": [
+            {
+              "slug": "area-from",
+              "text": "Area from:",
+              "value": "150"
+            },
+            {
+              "slug": "bedrooms-from",
+              "text": "Bedrooms from:",
+              "value": "150"
+            },
+            {
+              "slug": "energy-efficiency",
+              "text": "Energy Efficiency:",
+              "value": "A"
+            }
+          ],
+          "price": {
+            "text": "Starting at",
+            "value": "1050 000"
+          }
+        },
+        "button": {
+          "text": "Learn more",
+          "href": "/"
+        }
+      },
+      {
+        "image": "/images/projects/works-2.jpg",
+        "title": "ASGATA VILLAGE",
+        "slug": "asgata-village",
+        "description": {
+          "address": "1 Panepistimiou Blvd, <br /> Aglantzia 2109, Cyprus",
+          "type": {
+            "text": "Villa",
+            "slug": "villa"
+          },
+          "status": {
+            "text": "Investors call",
+            "slug": "investors-call"
+          },
+          "about": [
+            {
+              "slug": "area-from",
+              "text": "Area from:",
+              "value": "150"
+            },
+            {
+              "slug": "bedrooms-from",
+              "text": "Bedrooms from:",
+              "value": "150"
+            },
+            {
+              "slug": "energy-efficiency",
+              "text": "Energy Efficiency:",
+              "value": "A"
+            }
+          ],
+          "price": {
+            "text": "Starting at",
+            "value": "750 000"
+          }
+        },
+        "button": {
+          "text": "Learn more",
+          "href": "/"
+        }
+      },
+      {
+        "image": "/images/projects/works-3.jpg",
+        "title": "COZY HAVEN",
+        "slug": "cozy-haven",
+        "description": {
+          "address": "1 Panepistimiou Blvd, <br /> Aglantzia 2109, Cyprus",
+          "type": {
+            "text": "Apartment",
+            "slug": "apartment"
+          },
+          "status": {
+            "text": "Under construction",
+            "slug": "under-construction"
+          },
+          "about": [
+            {
+              "slug": "area-from",
+              "text": "Area from:",
+              "value": "100"
+            },
+            {
+              "slug": "bedrooms-from",
+              "text": "Bedrooms from:",
+              "value": "100"
+            },
+            {
+              "slug": "energy-efficiency",
+              "text": "Energy Efficiency:",
+              "value": "B"
+            }
+          ],
+          "price": {
+            "text": "Starting at",
+            "value": "850 000"
+          }
+        },
+        "button": {
+          "text": "Learn more",
+          "href": "/"
+        }
+      },
+      {
+        "image": "/images/projects/works-4.jpg",
+        "title": "MOUNTAIN VIEW",
+        "slug": "mountain-view",
+        "description": {
+          "address": "1 Panepistimiou Blvd, <br /> Aglantzia 2109, Cyprus",
+          "type": {
+            "text": "Residence",
+            "slug": "residence"
+          },
+          "status": {
+            "text": "Ready to move in",
+            "slug": "ready-to-move-in"
+          },
+          "about": [
+            {
+              "slug": "area-from",
+              "text": "Area from:",
+              "value": "200"
+            },
+            {
+              "slug": "bedrooms-from",
+              "text": "Bedrooms from:",
+              "value": "200"
+            },
+            {
+              "slug": "energy-efficiency",
+              "text": "Energy Efficiency:",
+              "value": "A"
+            }
+          ],
+          "price": {
+            "text": "Starting at",
+            "value": "3200 000"
+          }
+        },
+        "button": {
+          "text": "Learn more",
+          "href": "/"
+        }
+      },
+      {
+        "image": "/images/projects/works-5.jpg",
+        "title": "SEASIDE LIVING",
+        "slug": "seaside-living",
+        "description": {
+          "address": "1 Panepistimiou Blvd, <br /> Aglantzia 2109, Cyprus",
+          "type": {
+            "text": "Apartment",
+            "slug": "apartment"
+          },
+          "status": {
+            "text": "Ready to move in",
+            "slug": "ready-to-move-in"
+          },
+          "about": [
+            {
+              "slug": "area-from",
+              "text": "Area from:",
+              "value": "120"
+            },
+            {
+              "slug": "bedrooms-from",
+              "text": "Bedrooms from:",
+              "value": "120"
+            },
+            {
+              "slug": "energy-efficiency",
+              "text": "Energy Efficiency:",
+              "value": "A"
+            }
+          ],
+          "price": {
+            "text": "Starting at",
+            "value": "1450 000"
+          }
+        },
+        "button": {
+          "text": "Learn more",
+          "href": "/"
+        }
+      },
+      {
+        "image": "/images/projects/works-6.jpg",
+        "title": "URBAN OASIS",
+        "slug": "urban-oasis",
+        "description": {
+          "address": "2 Panepistimiou Blvd, <br /> Aglantzia 2109, Cyprus",
+          "type": {
+            "text": "Residence",
+            "slug": "residence"
+          },
+          "status": {
+            "text": "Under construction",
+            "slug": "under-construction"
+          },
+          "about": [
+            {
+              "slug": "area-from",
+              "text": "Area from:",
+              "value": "180"
+            },
+            {
+              "slug": "bedrooms-from",
+              "text": "Bedrooms from:",
+              "value": "180"
+            },
+            {
+              "slug": "energy-efficiency",
+              "text": "Energy Efficiency:",
+              "value": "B"
+            }
+          ],
+          "price": {
+            "text": "Starting at",
+            "value": "950 000"
+          }
+        },
+        "button": {
+          "text": "Learn more",
+          "href": "/"
+        }
+      },
+      {
+        "image": "/images/projects/works-7.jpg",
+        "title": "CITY LIGHTS",
+        "slug": "city-lights",
+        "description": {
+          "address": "3 Panepistimiou Blvd, <br /> Aglantzia 2109, Cyprus",
+          "type": {
+            "text": "Apartment",
+            "slug": "apartment"
+          },
+          "status": {
+            "text": "Investors call",
+            "slug": "investors-call"
+          },
+          "about": [
+            {
+              "slug": "area-from",
+              "text": "Area from:",
+              "value": "130"
+            },
+            {
+              "slug": "bedrooms-from",
+              "text": "Bedrooms from:",
+              "value": "130"
+            },
+            {
+              "slug": "energy-efficiency",
+              "text": "Energy Efficiency:",
+              "value": "A"
+            }
+          ],
+          "price": {
+            "text": "Starting at",
+            "value": "1100 000"
+          }
+        },
+        "button": {
+          "text": "Learn more",
+          "href": "/"
+        }
+      },
+      {
+        "image": "/images/projects/works-8.jpg",
+        "title": "COUNTRY RETREAT",
+        "slug": "country-retreat",
+        "description": {
+          "address": "4 Panepistimiou Blvd, <br /> Aglantzia 2109, Cyprus",
+          "type": {
+            "text": "Villa",
+            "slug": "villa"
+          },
+          "status": {
+            "text": "Ready to move in",
+            "slug": "ready-to-move-in"
+          },
+          "about": [
+            {
+              "slug": "area-from",
+              "text": "Area from:",
+              "value": "250"
+            },
+            {
+              "slug": "bedrooms-from",
+              "text": "Bedrooms from:",
+              "value": "250"
+            },
+            {
+              "slug": "energy-efficiency",
+              "text": "Energy Efficiency:",
+              "value": "A"
+            }
+          ],
+          "price": {
+            "text": "Starting at",
+            "value": "2000 000"
+          }
+        },
+        "button": {
+          "text": "Learn more",
+          "href": "/"
+        }
+      },
+      {
+        "image": "/images/projects/works-9.jpg",
+        "title": "LAKE HOUSE",
+        "slug": "lake-house",
+        "description": {
+          "address": "5 Panepistimiou Blvd, <br /> Aglantzia 2109, Cyprus",
+          "type": {
+            "text": "Residence",
+            "slug": "residence"
+          },
+          "status": {
+            "text": "Investors call",
+            "slug": "investors-call"
+          },
+          "about": [
+            {
+              "slug": "area-from",
+              "text": "Area from:",
+              "value": "300"
+            },
+            {
+              "slug": "bedrooms-from",
+              "text": "Bedrooms from:",
+              "value": "300"
+            },
+            {
+              "slug": "energy-efficiency",
+              "text": "Energy Efficiency:",
+              "value": "A"
+            }
+          ],
+          "price": {
+            "text": "Starting at",
+            "value": "2500 000"
+          }
+        },
+        "button": {
+          "text": "Learn more",
+          "href": "/"
+        }
+      },
+      {
+        "image": "/images/projects/works-10.jpg",
+        "title": "HILLSIDE VILLA",
+        "slug": "hillside-villa",
+        "description": {
+          "address": "6 Panepistimiou Blvd, <br /> Aglantzia 2109, Cyprus",
+          "type": {
+            "text": "Villa",
+            "slug": "villa"
+          },
+          "status": {
+            "text": "Under construction",
+            "slug": "under-construction"
+          },
+          "about": [
+            {
+              "slug": "area-from",
+              "text": "Area from:",
+              "value": "220"
+            },
+            {
+              "slug": "bedrooms-from",
+              "text": "Bedrooms from:",
+              "value": "220"
+            },
+            {
+              "slug": "energy-efficiency",
+              "text": "Energy Efficiency:",
+              "value": "B"
+            }
+          ],
+          "price": {
+            "text": "Starting at",
+            "value": "1800 000"
+          }
+        },
+        "button": {
+          "text": "Learn more",
+          "href": "/"
+        }
+      }
+    ]
+  }
+}

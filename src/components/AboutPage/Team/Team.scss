@@ -24,6 +24,11 @@
         height: VW(600);
         position: relative;
         overflow: hidden;
+
+        &-item {
+          z-index: -1;
+          pointer-events: none;
+        }
       }
 
       .text {
@@ -34,7 +39,6 @@
     }
 
     &__secondary {
-      width: 100%;
       display: flex;
       justify-content: flex-end;
       margin-top: VW(120);

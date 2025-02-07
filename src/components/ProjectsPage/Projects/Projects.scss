@@ -1,0 +1,9 @@
+.projects-page {
+  .projects {
+    margin-top: VW(20);
+
+    display: flex;
+    gap: VW(20);
+    flex-wrap: wrap;
+  }
+}

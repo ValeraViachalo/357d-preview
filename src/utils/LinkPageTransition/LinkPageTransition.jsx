@@ -7,6 +7,7 @@ import { TransitionContext } from "@/lib/providers/TransitionProvider/Transition
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 export const LinkPageTransition = ({ href, children, ...rest }) => {
+  const pageClass_active = "page-transition--active";
   const router = useRouter();
   const pathname = usePathname();
   const { setIsTransitionActive } = useContext(TransitionContext);
@@ -42,39 +43,32 @@ export const LinkPageTransition = ({ href, children, ...rest }) => {
     }
 
     setIsLoading(true);
-    body.classList.add("page-transition");
+    body.classList.add(pageClass_active);
 
     try {
       await setIsTransitionActive(true);
-      await sleep(500); // Initial transition effect
+      await sleep(200);
 
-      // Start navigation
       const navigationPromise = router.push(href);
-      
-      // Setup a timeout for maximum waiting time
-      const timeoutPromise = sleep(2000);
-      
-      // Wait for either navigation to complete or timeout
-      await Promise.race([
-        navigationPromise,
-        timeoutPromise
-      ]);
 
-      // Add a small delay to ensure DOM is ready
+      const timeoutPromise = sleep(2000);
+
+      await Promise.race([navigationPromise, timeoutPromise]);
+
       await sleep(100);
 
-      // Check if the pathname has actually changed
-      if (window.location.pathname === href || window.location.pathname === href + '/') {
-        // Successfully navigated
-        await sleep(400); // Final transition effect
+      if (
+        window.location.pathname === href ||
+        window.location.pathname === href + "/"
+      ) {
+        await sleep(400);
       } else {
-        // If navigation hasn't completed, wait a bit longer
         await sleep(1000);
       }
     } catch (error) {
-      console.error('Navigation error:', error);
+      console.error("Navigation error:", error);
     } finally {
-      body.classList.remove("page-transition");
+      body.classList.remove(pageClass_active);
       setIsTransitionActive(false);
       setIsLoading(false);
     }
@@ -89,11 +83,13 @@ export const LinkPageTransition = ({ href, children, ...rest }) => {
   }
 
   return (
-    <Link 
-      href={href} 
-      {...rest} 
+    <Link
+      href={href}
+      {...rest}
       onClick={handleTransition}
-      className={`${rest.className || ''} ${isLoading ? 'pointer-events-none' : ''}`}
+      className={`${rest.className || ""} ${
+        isLoading ? "pointer-events-none" : ""
+      }`}
     >
       {children}
     </Link>

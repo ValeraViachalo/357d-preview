@@ -58,8 +58,6 @@ export default function TeamAbout({ data }) {
           <div className="team__secondary-image-wrapper" ref={teamImage} >
             <motion.img
               src={data?.secondaryImage.image}
-              width={1150}
-              height={1150}
               style={{ filter, y }}
               alt="team big image"
               className="team__secondary-image"

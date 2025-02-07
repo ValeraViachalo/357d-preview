@@ -6,11 +6,11 @@ import { URL_ABOUT } from "@/lib/helpers/DataUrls";
 import { generatePagesMetadata } from "@/lib/helpers/generatePagesMetadata";
 import { useLanguageContent } from "@/lib/helpers/useLanguageContent";
 
-export const generateMetadata = async () => generatePagesMetadata(URL_ABOUT);
+export const generateMetadata = async () => generatePagesMetadata(URL_ABOUT, "gre");
 
 export default async function Home() {
   const preparedData = await getFetchData(URL_ABOUT);
-  const data = useLanguageContent(preparedData, "en");
+  const data = useLanguageContent(preparedData, "gre");
   
   return (
     <AboutPage data={data}/>

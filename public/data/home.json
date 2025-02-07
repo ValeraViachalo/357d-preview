@@ -1,11 +1,11 @@
 {
-  "seo": {
-    "documentTitle": "357D",
-    "documentKeywords": "nextjs, next.js, creative, creative development, framer-motion",
-    "documentDescription": "the ideal template for creative work, featuring stunning components and fluid functionality on nextjs.",
-    "documentImage": "/images/screenshot.png"
-  },
   "en": {
+    "seo": {
+      "documentTitle": "357D",
+      "documentKeywords": "nextjs, next.js, creative, creative development, framer-motion",
+      "documentDescription": "the ideal template for creative work, featuring stunning components and fluid functionality on nextjs.",
+      "documentImage": "/images/screenshot.png"
+    },
     "hero": {
       "adress": {
         "text": "Adress we are proud of: <br /> 5 Yunitsman St., <br /> Larnaca 6936025, Cyprus",

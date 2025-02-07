@@ -1,11 +1,11 @@
 {
-  "seo": {
-    "documentTitle": "FOR CLIENTS | 357D",
-    "documentKeywords": "nextjs, next.js, creative, creative development, framer-motion",
-    "documentDescription": "the ideal template for creative work, featuring stunning components and fluid functionality on nextjs.",
-    "documentImage": "/images/screenshot.png"
-  },
   "en": {
+    "seo": {
+      "documentTitle": "FOR CLIENTS | 357D",
+      "documentKeywords": "nextjs, next.js, creative, creative development, framer-motion",
+      "documentDescription": "the ideal template for creative work, featuring stunning components and fluid functionality on nextjs.",
+      "documentImage": "/images/screenshot.png"
+    },
     "hero": {
       "links": [
         {
@@ -184,6 +184,12 @@
     ]
   },
   "gre": {
+    "seo": {
+      "documentTitle": "ΓΙΑ ΠΕΛΑΤΕΣ | 357D",
+      "documentKeywords": "nextjs, next.js, creative, creative development, framer-motion",
+      "documentDescription": "the ideal template for creative work, featuring stunning components and fluid functionality on nextjs.",
+      "documentImage": "/images/screenshot.png"
+    },
     "hero": {
       "links": [
         {

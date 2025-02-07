@@ -36,7 +36,7 @@ export default function RootLayout({ children }) {
         <LocaleProvider>
           <TransitionProvider>
             <Header />
-            <main id="page-transition">
+            <main className="page-transition" id="page-transition">
               {children}
               <ContactForm />
               <Footer />

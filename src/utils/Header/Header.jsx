@@ -12,7 +12,7 @@ import { usePathname } from "next/navigation";
 import clsx from "clsx";
 import { AnimatePresence, motion } from "framer-motion";
 import { ease } from "@/lib/helpers/ease";
-import { anim, textPresence } from "@/lib/helpers/anim";
+import { anim, TitlePresence } from "@/lib/helpers/anim";
 import { LinkPageTransition } from "../LinkPageTransition/LinkPageTransition";
 
 export default function Header() {
@@ -56,7 +56,7 @@ export default function Header() {
           <AnimatePresence mode="wait">
             {path === "/" || path === "/gre" ? (
               isTopScroll ? (
-                <motion.p className="header__logo-text" {...anim(textPresence)}>
+                <motion.p className="header__logo-text" {...anim(TitlePresence)}>
                   Estate to be proud of
                 </motion.p>
               ) : (

@@ -37,16 +37,6 @@
             filter: blur(10vw);
             scale: 1.2;
           }
-  
-          &-blu1r {
-            content: "";
-            position: absolute;
-            z-index: 10;
-            inset: 0;
-            background-color: #ffffff30;
-            display: block;
-            // backdrop-filter: blur(10vw);
-          }
         }
   
         .list {

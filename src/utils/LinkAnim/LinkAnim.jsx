@@ -22,7 +22,7 @@ export const LinkAnim = ({href, classes = "", text, icon = false, secondaryItem 
         </p>
       )}
       <p className="link-anim__text-wrapper" aria-label={text}>
-        {text.split("").map((word, index) => (
+        {text && text.split("").map((word, index) => (
           <span className="link-anim__text" key={index} style={{ transitionDelay: `${(index / text.split("").length) * 0.06}s` }}>
             {word !== " " ? word : (<>&nbsp;</>)}
           </span>
