@@ -53,7 +53,7 @@ export default function Header() {
     data && (
       <header className={clsx("header grid", { "header--bg": !isTopScroll, "header--white": isWhiteHeader })}>
         <LinkPageTransition href={isGrePath ? "/gre" : "/"} className="header__logo">
-          <AnimatePresence mode="wait">
+          <AnimatePresence mode="popLayout">
             {path === "/" || path === "/gre" ? (
               isTopScroll ? (
                 <motion.p className="header__logo-text" {...anim(TitlePresence)}>
@@ -61,16 +61,21 @@ export default function Header() {
                 </motion.p>
               ) : (
                 <motion.div
-                  layoutId={`header_logo-${path}`}
-                  transition={{
-                    layout: {
-                      duration: 0.4,
-                      ease: ease.inOutExpo,
-                    },
-                  }}
+                  {...anim(TitlePresence)}
                 >
                   <Logo />
                 </motion.div>
+                // <motion.div
+                //   layoutId={`header_logo-${path}`}
+                //   transition={{
+                //     layout: {
+                //       duration: 0.4,
+                //       ease: ease.inOutExpo,
+                //     },
+                //   }}
+                // >
+                //   <Logo />
+                // </motion.div>
               )
             ) : (
               <div className="header__logo header__logo--regular">

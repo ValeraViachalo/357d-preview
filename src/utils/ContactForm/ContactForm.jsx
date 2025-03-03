@@ -138,9 +138,9 @@ const ContactForm = () => {
                 {submitted && (
                   <div className="form-success-message">
                     <h2 className="upperCase">
-                      {data.contact.successTitle.text}
+                      {data.contact?.successTitle?.text}
                     </h2>
-                    <p>{data.contact.successTitle.subtext}</p>
+                    <p>{data.contact?.successTitle?.subtext}</p>
                   </div>
                 )}
                 <Form

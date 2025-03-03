@@ -70,7 +70,7 @@ export const HeroHome = ({ data }) => {
   return (
     <section className="hero" ref={heroRef}>
       <div className="container grid">
-        {isTopScroll && isDesktop && (
+        {/* {isTopScroll && isDesktop && (
           <motion.div
             className="logo"
             layoutId={`header_logo-${path}`}
@@ -84,15 +84,15 @@ export const HeroHome = ({ data }) => {
           >
             <Logo className="logo__image" />
           </motion.div>
-        )}
-        {!isDesktop && (
+        )} */}
+        
           <motion.div
             className="logo"
 
           >
             <Logo className="logo__image" />
           </motion.div>
-        )}
+      
         <div className="top">
           <Link href={adress.href}>
             <p
@@ -117,8 +117,8 @@ export const HeroHome = ({ data }) => {
         />
       </motion.div> */}
       <div className="slideshow">
-        {loadedImages.length && (
-          <AnimatePresence mode="popLayout">
+        {loadedImages.length !== 0 && (
+          <AnimatePresence mode="popLayout" initial={false}>
             <motion.div
               className="slide"
               key={activeSlide}
