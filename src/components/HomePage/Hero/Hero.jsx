@@ -101,7 +101,7 @@ export const HeroHome = ({ data }) => {
             />
           </Link>
 
-          <Link href={link.href}>
+          <Link data-use-scroll={link.href} href={link.href}>
             <p
               className="top-link small-text"
               dangerouslySetInnerHTML={{ __html: link.text }}

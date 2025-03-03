@@ -13,7 +13,7 @@
       },
       "link": {
         "text": "Ready to find the one you’ll be proud of?",
-        "href": "/"
+        "href": "#contact"
       },
       "slideshow": [
         "/images/home/hero/1.webp",
@@ -94,7 +94,7 @@
       },
       "link": {
         "text": "Έτοιμοι να βρείτε αυτό για το οποίο θα είστε περήφανοι;",
-        "href": "/"
+        "href": "#contact"
       },
       "slideshow": [
         "/images/home/hero/1.webp",

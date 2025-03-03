@@ -32,7 +32,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className="html">
       <body className={`${ppMori.variable} body`}>
-        <ScrollProvider scrollBar></ScrollProvider>
+        <ScrollProvider></ScrollProvider>
         <LocaleProvider>
           <TransitionProvider>
             <Header />
