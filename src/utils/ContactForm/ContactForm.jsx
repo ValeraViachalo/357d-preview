@@ -21,6 +21,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { anim, ContactTitle } from "@/lib/helpers/anim";
 import { Content } from "../Content/Content";
+import { sendEmail } from "@/app/actions"; // Import the server action
 
 const ContactForm = () => {
   const [submitted, setSubmitted] = useState(false);
@@ -71,13 +72,35 @@ const ContactForm = () => {
     message: Yup.string(),
   });
 
-  const handleSubmit = (values, { setSubmitting, resetForm }) => {
-    console.log(values);
-    setSubmitting(false);
-    setSubmitted(true);
-    resetForm();
+  const handleSubmit = async (values, { setSubmitting, resetForm }) => {
+    try {
+      // Format data for the email service
+      const emailData = {
+        email: values.email,
+        phone: values.phone,
+        name: values.name,
+        message: values.message
+      };
+      
+      // Use the server action directly instead of fetch
+      const result = await sendEmail(emailData);
+      
+      if (result.success) {
+        console.log("Email sent successfully");
+        setSubmitted(true);
+        resetForm();
+      } else {
+        console.error("Failed to send email:", result.error);
+        // You might want to show an error message to the user here
+      }
+    } catch (error) {
+      console.error("Error sending email:", error);
+      // Handle error (you might want to show an error message to the user)
+    } finally {
+      setSubmitting(false);
+    }
   };
-
+  
   return (
     data && (
       <section
@@ -199,7 +222,7 @@ const ContactForm = () => {
                           key={index}
                           style={{ transitionDelay: `${index * 0.01}s` }}
                         >
-                          {word !== " " ? word : <>&nbsp;</>}
+                          {word !== " " ? word : <>&nbsp;</> }
                         </span>
                       ))}
                     </p>
@@ -292,7 +315,7 @@ const SocialsButton = ({ icon, href, text }) => {
             key={index}
             style={{ transitionDelay: `${index * 0.01}s` }}
           >
-            {word !== " " ? word : <>&nbsp;</>}
+            {word !== " " ? word : <>&nbsp;</> }
           </span>
         ))}
       </p>
