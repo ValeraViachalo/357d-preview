@@ -80,7 +80,7 @@ export default function Header() {
             )}
           </AnimatePresence>
         </LinkPageTransition>
-        <nav className="header__list">
+        {/* <nav className="header__list">
           {data.list.map((currLink, index) => (
             <LinkAnim
               classes="link"
@@ -89,7 +89,7 @@ export default function Header() {
               text={currLink.name}
             />
           ))}
-        </nav>
+        </nav> */}
 
         <div className="right">
           <LinkAnim

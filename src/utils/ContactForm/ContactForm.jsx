@@ -77,8 +77,6 @@ const ContactForm = () => {
     resetForm();
   };
 
-  
-
   return (
     data && (
       <section className={classNames("contact-form", {
@@ -106,6 +104,12 @@ const ContactForm = () => {
           >
             {({ errors, touched, isValid, dirty }) => (
               <Form className="form">
+                {submitted && (
+                  <div className="form--success">
+                    <h2 className="upperCase">{data.contact.successTitle.text}</h2>
+                    <p>{data.contact.successTitle.subtext}</p>
+                  </div>
+                )}
                 <div className="input-wrapper">
                   <Field
                     type="email"
@@ -191,10 +195,10 @@ const ContactForm = () => {
               <SocialsButton
                 icon="/images/socials/phone.svg"
                 text={data.socials.phone}
-                href={`tel:${data.socials.phone}`}
+                href={data.socials.phoneHref}
               />
             </div>
-            <div className="list">
+            {/* <div className="list">
               {data.socials.list.map((currI, i) => (
                 <SocialsButton
                   href={currI.href}
@@ -203,7 +207,7 @@ const ContactForm = () => {
                   key={i}
                 />
               ))}
-            </div>
+            </div> */}
           </div>
         </motion.div>
       </section>

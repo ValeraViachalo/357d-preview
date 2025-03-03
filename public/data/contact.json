@@ -13,6 +13,10 @@
       "bottom": "you would be proud of"
     },
     "contact": {
+      "successTitle": {
+        "text": "Thank you for your request!",
+        "subtext": "We will contact you shortly"
+      },
       "email": {
         "text": "Email",
         "errorMessage": "Please enter a valid email address"
@@ -31,7 +35,8 @@
     },
     "socials": {
       "text": "Feel free to reach out to us in whatever way suits you best — we're always ready to assist you.",
-      "phone": "357 9016 9445",
+      "phone": "357 2500 8980",
+      "phoneHref": "phone:35725008980",
       "list": [
         {
           "text": "Facebook",

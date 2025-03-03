@@ -10,7 +10,7 @@ const HomePage = ({ data }) => {
     <main className="home">
       <HeroHome data={data.hero} />
       <AboutHome data={data.about}/>
-      <ProjectsHome data={data.projects} />
+      {/* <ProjectsHome data={data.projects} /> */}
       <ServicesHome data={data.services} />
     </main>
   );

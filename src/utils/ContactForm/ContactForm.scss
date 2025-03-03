@@ -43,6 +43,21 @@
     flex-direction: column;
     gap: VW(10);
 
+    position: relative;
+
+    &--success {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      background-color: $c-white;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: VW(10);
+    }
+
     .input {
       width: 100%;
       padding: VW(10) 0;
