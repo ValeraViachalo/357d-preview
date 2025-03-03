@@ -7,6 +7,10 @@
   font-weight: 700;
   line-height: 100%;
   letter-spacing: normal;
+
+  @include forMobile {
+    font-size: VW(30, $mobile);
+  }
 }
 
 .super-text {
@@ -24,6 +28,10 @@
   font-weight: normal;
   line-height: 105%;
   letter-spacing: normal;
+
+  @include forMobile {
+    font-size: VW(20, $mobile);
+  }
 }
 
 
@@ -34,12 +42,22 @@
   font-weight: 400;
   line-height: 110%;
   letter-spacing: normal;
+  
+  @include forMobile {
+    font-size: VW(14, $mobile);
+    line-height: 115%;
+  }
 }
 
 .small-text {
   font-family: var(--pp-mori), sans-serif;
   font-size: VW(14);
   line-height: 105%;
+  
+  @include forMobile {
+    font-size: VW(12, $mobile);
+    line-height: 110%;
+  }
 }
 
 .upperCase {

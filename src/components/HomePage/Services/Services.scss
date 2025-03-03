@@ -4,9 +4,19 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    @include forMobile {
+      margin-top: VW(60, $mobile);
+      flex-direction: column;
+      gap: VW(20, $mobile);
+    }
   
     &__title {
       width: VW(400);
+
+      @include forMobile {
+        width: 100%;
+      }  
     }
   
     .list {
@@ -14,10 +24,20 @@
       flex-direction: column;
       gap: VW(15);
       width: 50%;
-    
+      
+      @include forMobile {
+        gap: VW(15, $mobile);
+        width: 100%;
+      }  
+
       &__item {
         border-bottom: .1vw solid #00000020;
         padding-bottom: VW(15);
+        
+        @include forMobile {
+          padding-bottom: VW(10, $mobile);
+          font-size: VW(14, $mobile);
+        }
       }
     }
   }

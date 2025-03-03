@@ -27,6 +27,12 @@
       margin-left: VW(2);
       stroke: auto;
 
+      @include forMobile {
+        width: VW(10, $mobile);
+        height: VW(5, $mobile);
+        margin-left: VW(1, $mobile);
+      }
+
       & > path {
         stroke: inherit;
       }
@@ -53,6 +59,13 @@
     transition: scale 0.3s ease, opacity 0.3s ease,
       filter 0.3s ease;
 
+    @include forMobile {
+      border-radius: VW(6, $mobile);
+      padding: VW(5, $mobile);
+      left: -30%;
+      top: 120%;
+    }
+
     &--active {
       opacity: 1 !important;
       pointer-events: all !important;
@@ -75,6 +88,10 @@
       color: $c-black;
       background-color: $c-white;
       opacity: 0.8;
+    }
+
+    @include forMobile {
+      padding: VW(5, $mobile) VW(10, $mobile) VW(3, $mobile);
     }
   }
 }

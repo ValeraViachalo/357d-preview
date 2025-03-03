@@ -20,11 +20,12 @@ import {
 import Link from "next/link";
 import Image from "next/image";
 import { anim, ContactTitle } from "@/lib/helpers/anim";
+import { Content } from "../Content/Content";
 
 const ContactForm = () => {
   const [submitted, setSubmitted] = useState(false);
   const [data, setData] = useState(null);
-  const [isAnitaionFinished, setIsAnitaionFinished] = useState(false)
+  const [isAnitaionFinished, setIsAnitaionFinished] = useState(false);
   const { lang } = useContext(LocaleContext);
 
   const formRef = useRef();
@@ -79,9 +80,16 @@ const ContactForm = () => {
 
   return (
     data && (
-      <section className={classNames("contact-form", {
-        "contact-form--inactive": isAnitaionFinished
-      })} id="contact" ref={formRef}>
+      <section
+        className={classNames("contact-form", {
+          "contact-form--inactive": isAnitaionFinished,
+        })}
+        id="contact"
+        ref={formRef}
+      >
+        <motion.div className="background">
+          <Content url="/images/hero.webm" className="background__item" />
+        </motion.div>
         <motion.div
           style={{ y, opacity, scale, filter }}
           className="contact-form__wrapper"
@@ -103,90 +111,101 @@ const ContactForm = () => {
             onSubmit={handleSubmit}
           >
             {({ errors, touched, isValid, dirty }) => (
-              <Form className="form">
+              <div className="form-wrapper">
                 {submitted && (
-                  <div className="form--success">
-                    <h2 className="upperCase">{data.contact.successTitle.text}</h2>
+                  <div className="form-success-message">
+                    <h2 className="upperCase">
+                      {data.contact.successTitle.text}
+                    </h2>
                     <p>{data.contact.successTitle.subtext}</p>
                   </div>
                 )}
-                <div className="input-wrapper">
-                  <Field
-                    type="email"
-                    name="email"
-                    placeholder={data.contact.email.text}
-                    className={classNames("input", {
-                      "input--error": errors.email && touched.email,
-                    })}
-                  />
-                  <ErrorMessage
-                    name="email"
-                    component="p"
-                    className="input-error-msg small-text"
-                  />
-                </div>
-
-                <div className="input-wrapper">
-                  <Field
-                    type="text"
-                    name="name"
-                    placeholder={data.contact.name.text}
-                    className={classNames("input", {
-                      "input--error": errors.name && touched.name,
-                    })}
-                  />
-                  <ErrorMessage
-                    name="name"
-                    component="p"
-                    className="input-error-msg small-text"
-                  />
-                </div>
-
-                <div className="input-wrapper">
-                  <Field
-                    type="tel"
-                    name="phone"
-                    placeholder={data.contact.phone.text}
-                    className={classNames("input", {
-                      "input--error": errors.phone && touched.phone,
-                    })}
-                  />
-                  <ErrorMessage
-                    name="phone"
-                    component="p"
-                    className="input-error-msg small-text"
-                  />
-                </div>
-
-                <div className="input-wrapper">
-                  <Field
-                    as="textarea"
-                    name="message"
-                    placeholder={data.contact.message.text}
-                    className="input textarea"
-                  />
-                </div>
-
-                <button
-                  type="submit"
-                  className={classNames("submit-button button button--black", {
-                    "submit-button--disabled": !isValid || !dirty,
+                <Form
+                  className={classNames("form", {
+                    "form--submitted": submitted,
                   })}
-                  disabled={!isValid || !dirty}
                 >
-                  <p className="button__text-wrapper">
-                    {data.contact.button.split("").map((word, index) => (
-                      <span
-                        className="button__text"
-                        key={index}
-                        style={{ transitionDelay: `${index * 0.01}s` }}
-                      >
-                        {word !== " " ? word : <>&nbsp;</>}
-                      </span>
-                    ))}
-                  </p>
-                </button>
-              </Form>
+                  <div className="input-wrapper">
+                    <Field
+                      type="email"
+                      name="email"
+                      placeholder={data.contact.email.text}
+                      className={classNames("input", {
+                        "input--error": errors.email && touched.email,
+                      })}
+                    />
+                    <ErrorMessage
+                      name="email"
+                      component="p"
+                      className="input-error-msg small-text"
+                    />
+                  </div>
+
+                  <div className="input-wrapper">
+                    <Field
+                      type="text"
+                      name="name"
+                      placeholder={data.contact.name.text}
+                      className={classNames("input", {
+                        "input--error": errors.name && touched.name,
+                      })}
+                    />
+                    <ErrorMessage
+                      name="name"
+                      component="p"
+                      className="input-error-msg small-text"
+                    />
+                  </div>
+
+                  <div className="input-wrapper">
+                    <Field
+                      type="tel"
+                      name="phone"
+                      placeholder={data.contact.phone.text}
+                      className={classNames("input", {
+                        "input--error": errors.phone && touched.phone,
+                      })}
+                    />
+                    <ErrorMessage
+                      name="phone"
+                      component="p"
+                      className="input-error-msg small-text"
+                    />
+                  </div>
+
+                  <div className="input-wrapper">
+                    <Field
+                      as="textarea"
+                      name="message"
+                      placeholder={data.contact.message.text}
+                      className="input textarea"
+                    />
+                  </div>
+
+                  <button
+                    type="submit"
+                    className={classNames(
+                      "submit-button button button--black",
+                      {
+                        "submit-button--disabled": !isValid || !dirty,
+                      }
+                    )}
+                    disabled={!isValid || !dirty}
+                  >
+                    <p className="button__text-wrapper">
+                      {data.contact.button.split("").map((word, index) => (
+                        <span
+                          className="button__text"
+                          key={index}
+                          style={{ transitionDelay: `${index * 0.01}s` }}
+                        >
+                          {word !== " " ? word : <>&nbsp;</>}
+                        </span>
+                      ))}
+                    </p>
+                  </button>
+                </Form>
+              </div>
             )}
           </Formik>
           <div className="socials">
@@ -235,13 +254,17 @@ const AnimTitle = ({ titles }) => {
         >
           {titles[activeIndex]}
         </motion.h1> */}
-        <motion.h1 className="title-anim" key={titles[activeIndex]} aria-label={titles[activeIndex]}>
+        <motion.h1
+          className="title-anim"
+          key={titles[activeIndex]}
+          aria-label={titles[activeIndex]}
+        >
           {titles[activeIndex].split("").map((currL, i) => (
             <motion.span
               key={i}
               style={{ display: "inline-block" }}
               {...anim(ContactTitle.variant3)}
-              custom={((i / titles[activeIndex].split("").length) * 0.08)}
+              custom={(i / titles[activeIndex].split("").length) * 0.08}
             >
               {currL}
             </motion.span>

@@ -4,15 +4,26 @@ import React, { useEffect, useRef, useState } from "react";
 import "./Hero.scss";
 import Link from "next/link";
 import { Logo } from "@/utils/Logo/Logo";
-import { motion, useScroll, useTransform } from "framer-motion";
+import {
+  AnimatePresence,
+  motion,
+  useScroll,
+  useTransform,
+} from "framer-motion";
 import { ease } from "@/lib/helpers/ease";
 import { Content } from "@/utils/Content/Content";
 import { usePathname } from "next/navigation";
+import Img from "next/image";
+import { HeroHomeAnim } from "@/lib/helpers/anim";
+import useIsDesktop from "@/lib/helpers/useIsDesktop";
 
 export const HeroHome = ({ data }) => {
+  const isDesktop = useIsDesktop();
   const heroRef = useRef(null);
   const { adress, link } = data;
+  const [activeSlide, setActiveSlide] = useState(0);
   const [isTopScroll, setIsTopScroll] = useState(true);
+  const [loadedImages, setLoadedImages] = useState([]);
   const path = usePathname();
 
   const heroBgRef = useRef();
@@ -36,10 +47,30 @@ export const HeroHome = ({ data }) => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    const loadImages = data.slideshow.map(image => {
+      const img = new Image();
+      img.src = image;
+      return img;
+    });
+    setLoadedImages(loadImages);
+
+    console.log("loadedImages", loadedImages);
+    console.log("data", data.slideshow);
+    
+  }, [data.slideshow]);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveSlide((prevIndex) => (prevIndex + 1) % loadedImages.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [loadedImages]);
+
   return (
     <section className="hero" ref={heroRef}>
       <div className="container grid">
-        {isTopScroll && (
+        {isTopScroll && isDesktop && (
           <motion.div
             className="logo"
             layoutId={`header_logo-${path}`}
@@ -50,6 +81,14 @@ export const HeroHome = ({ data }) => {
                 ease: ease.inOutExpo,
               },
             }}
+          >
+            <Logo className="logo__image" />
+          </motion.div>
+        )}
+        {!isDesktop && (
+          <motion.div
+            className="logo"
+
           >
             <Logo className="logo__image" />
           </motion.div>
@@ -70,13 +109,40 @@ export const HeroHome = ({ data }) => {
           </Link>
         </div>
       </div>
-      <motion.div className="background" ref={heroBgRef}>
+      {/* <motion.div className="background" ref={heroBgRef}>
         <Content
           url="/images/hero.webm"
           className="background__item"
           style={{ y }}
         />
-      </motion.div>
+      </motion.div> */}
+      <div className="slideshow">
+        {loadedImages.length && (
+          <AnimatePresence mode="popLayout">
+            <motion.div
+              className="slide"
+              key={activeSlide}
+              custom={1}
+              variants={HeroHomeAnim.slideshow}
+              initial="enter"
+              animate="center"
+              exit="exit"
+              // onClick={() =>
+              //   setActiveSlide(
+              //     (prevIndex) => (prevIndex + 1) % loadedImages.length
+              //   )
+              // }
+            >
+              <img
+                src={loadedImages[activeSlide].src}
+                width={1920}
+                height={1080}
+                alt="357D"
+              />
+            </motion.div>
+          </AnimatePresence>
+        )}
+      </div>
     </section>
   );
 };

@@ -2,6 +2,10 @@
   .about {
     position: relative;
     margin-top: VW(20);
+
+    @include forMobile {
+      margin-top: VW(10, $mobile);
+    }
   
     .top {
       .about {
@@ -9,10 +13,22 @@
           position: absolute;
           top: VW(7);
           width: VW(160);
+
+          @include forMobile {
+            top: VW(5, $mobile);
+            width: VW(82, $mobile);
+            font-size: VW(10, $mobile);
+            line-height: 105%;
+          }
         }
   
         &__title {
           text-indent: VW(246);
+          
+          @include forMobile {
+            text-indent: VW(88, $mobile);
+          }
+
           .wrapper:nth-of-type(1) {
             text-indent: VW(246);
           }

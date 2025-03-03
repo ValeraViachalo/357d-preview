@@ -48,6 +48,11 @@
 .container {
   padding-right: VW(20);
   padding-left: VW(20);
+  
+  @include forMobile {
+    padding-right: VW(12, $mobile);
+    padding-left: VW(12, $mobile);
+  }
 }
 
 .shadow {

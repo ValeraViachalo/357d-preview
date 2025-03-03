@@ -5,6 +5,10 @@
   display: inline-flex;
   transition: scale 1s $ease-in-out-circ;
   width: fit-content;
+  
+  @include forMobile {
+    padding: VW(13, $mobile) VW(30, $mobile) VW(10, $mobile);
+  }
 
   @include hover {
     scale: 1.05;
