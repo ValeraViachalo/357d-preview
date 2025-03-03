@@ -1,8 +1,8 @@
 const fallbackData = {
       "documentTitle": "357D",
       "documentKeywords": "nextjs, next.js, creative, creative development, framer-motion",
-      "documentDescription": "the ideal template for creative work, featuring stunning components and fluid functionality on nextjs.",
-      "documentImage": "/images/screenshot.png"
+      "documentDescription": "Building homes, not just walls We are developing a property that integrates urban principles and prioritizes human needs in a contemporary housing format.",
+      "documentImage": "/images/screenshot2.jpg"
     }
 
 export async function generatePagesMetadata(endpoint, lang="en") {
