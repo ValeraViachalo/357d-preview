@@ -24,8 +24,8 @@ export async function generatePagesMetadata(endpoint, lang="en") {
       images: [
         {
           url: data.documentImage,
-          width: 720,
-          height: 405,
+          width: 600,
+          height: 315,
           alt: "OpenGraph",
         },
       ],
