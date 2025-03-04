@@ -22,13 +22,14 @@ import Image from "next/image";
 import { anim, ContactTitle } from "@/lib/helpers/anim";
 import { Content } from "../Content/Content";
 import { sendEmail } from "@/app/actions"; // Import the server action
+import useIsDesktop from "@/lib/helpers/useIsDesktop";
 
 const ContactForm = () => {
   const [submitted, setSubmitted] = useState(false);
   const [data, setData] = useState(null);
   const [isAnitaionFinished, setIsAnitaionFinished] = useState(false);
   const { lang } = useContext(LocaleContext);
-
+  const isDesktop = useIsDesktop();
   const formRef = useRef();
 
   const { scrollYProgress } = useScroll({
@@ -111,7 +112,11 @@ const ContactForm = () => {
         ref={formRef}
       >
         <motion.div className="background">
-          <Content url="/images/hero.webm" className="background__item" />
+          {isDesktop ? (
+            <Content url="/images/hero.webm" className="background__item" />
+          ) : (
+            <Content url="/images/home/hero/heroMobile.mp4" className="background__item" />
+          )}
         </motion.div>
         <motion.div
           style={{ y, opacity, scale, filter }}
