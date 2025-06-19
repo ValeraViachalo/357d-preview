@@ -75,12 +75,13 @@ const Table = ({
         {data?.bottom.active && (
           <div className="bottom table-grid">
             <motion.h2>
-              <motion.span
+              {/* <motion.span
                 {...anim(ProjectsAnim.card)}
                 key={`bottom-${projectsList.length}`}
               >
                 {projectsList.length}{" "}
-              </motion.span>
+              </motion.span> */}
+              {data?.lists.length}{" "}
               {data?.bottom.unitsText}
             </motion.h2>
             <h2 className="bottom-right">

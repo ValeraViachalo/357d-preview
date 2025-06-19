@@ -18,7 +18,7 @@ export async function generatePagesMetadata(endpoint, lang = "en") {
       return response.json();
     });
 
-    const data = preparedData?.seo || fallbackData;
+    const data = preparedData?.seo || preparedData.en?.seo || fallbackData;
 
     return {
       title: data.documentTitle,

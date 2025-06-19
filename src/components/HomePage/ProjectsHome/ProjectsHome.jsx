@@ -66,11 +66,12 @@ const ProjectCard = ({ project }) => {
           )}
           <div className="bottom__button">
             <Link
-              href={project.button?.href}
+              href={project.button?.type === "not-available" ? "#contact" : project.button?.href}
               className={clsx("button", {
                 "button--not-available":
                   project.button?.type === "not-available",
               })}
+              {...(project.button?.type === "not-available" ? { "data-scroll-anchor": "#contact" } : {})}
             >
               <p
                 className="button__text-wrapper upperCase"

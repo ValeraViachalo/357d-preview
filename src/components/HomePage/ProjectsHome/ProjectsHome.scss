@@ -117,14 +117,14 @@
           }
 
           &__button {
-            cursor: wait;
+            // cursor: wait;
 
             .button {
               &--not-available {
                 background-color: $c-black;
                 color: $c-white;
-                pointer-events: none;
-                opacity: 0.2;
+                // pointer-events: none;
+                opacity: 0.3;
               }
             }
           }
