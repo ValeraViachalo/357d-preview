@@ -1,0 +1,180 @@
+{
+  "en": {
+    "title": "Stay connected at every milestone",
+    "signUp": {
+      "text": "Subscribe to our newsletter to stay updated on construction project digests, be the first to hear the latest news, get inspired, and much more!",
+      "button": {
+        "text": "Sign up",
+        "href": "/"
+      }
+    },
+    "navigation": {
+      "pages": [
+        {
+          "text": "Projects",
+          "href": "/"
+        },
+        {
+          "text": "Properties for Sale",
+          "href": "/"
+        },
+        {
+          "text": "About us",
+          "href": "/about"
+        },
+        {
+          "text": "For clients",
+          "href": "/for-clients"
+        },
+        {
+          "text": "Contact",
+          "href": "/"
+        },
+        {
+          "text": "Careers",
+          "href": "/"
+        }
+      ],
+      "policies": [
+        {
+          "text": "Terms of use",
+          "href": "/"
+        },
+        {
+          "text": "Privacy Policy",
+          "href": "/"
+        }
+      ],
+      "socials": [
+        {
+          "text": "Facebook",
+          "href": "https://www.facebook.com/"
+        },
+        {
+          "text": "Instagram",
+          "href": "https://www.instagram.com/"
+        },
+        {
+          "text": "LinkedIn",
+          "href": "https://www.facebook.com/"
+        },
+        {
+          "text": "Youtube",
+          "href": "https://www.youtube.com/"
+        }
+      ]
+    },
+    "contacts": {
+      "top": [
+        {
+          "text": "357 9016 9445",
+          "href": "tel:35790169445"
+        },
+        {
+          "text": "info@357Doffice.com",
+          "href": "mailto:info@357Doffice.com"
+        }
+      ],
+      "adress": {
+        "text": "5 Yunitsman St., <br /> Larnaca 6936025, Cyprus",
+        "button": {
+          "text": "See on map",
+          "href": "https://maps.app.goo.gl/gHhJcij5konBfM969"
+        }
+      }
+    },
+    "madeBy": {
+      "text": "Made by twid",
+      "href": "https://twid.marketing/en"
+    }
+  },
+  "gre": {
+    "title": "Μείνετε συνδεδεμένοι σε κάθε στάδιο",
+    "signUp": {
+      "text": "Εγγραφείτε στο newsletter μας για να ενημερώνεστε για τις εξελίξεις των κατασκευαστικών έργων, να είστε οι πρώτοι που θα ακούσετε τα τελευταία νέα, να εμπνέεστε και πολλά άλλα!",
+      "button": {
+        "text": "Εγγραφή",
+        "href": "/"
+      }
+    },
+    "navigation": {
+      "pages": [
+        {
+          "text": "Έργα",
+          "href": "/"
+        },
+        {
+          "text": "Ακίνητα προς πώληση",
+          "href": "/"
+        },
+        {
+          "text": "Σχετικά με εμάς",
+          "href": "/"
+        },
+        {
+          "text": "Για πελάτες",
+          "href": "/"
+        },
+        {
+          "text": "Επικοινωνία",
+          "href": "/"
+        },
+        {
+          "text": "Καριέρα",
+          "href": "/"
+        }
+      ],
+      "policies": [
+        {
+          "text": "Όροι χρήσης",
+          "href": "/"
+        },
+        {
+          "text": "Πολιτική απορρήτου",
+          "href": "/"
+        }
+      ],
+      "socials": [
+        {
+          "text": "Facebook",
+          "href": "/"
+        },
+        {
+          "text": "Instagram",
+          "href": "/"
+        },
+        {
+          "text": "LinkedIn",
+          "href": "/"
+        },
+        {
+          "text": "Youtube",
+          "href": "/"
+        }
+      ]
+    },
+    "contacts": {
+      "top": [
+        {
+          "text": "357 9016 9445",
+          "href": "tel:35790169445"
+        },
+        {
+          "text": "info@357Doffice.com",
+          "href": "mailto:info@357Doffice.com"
+        }
+      ],
+      "adress": {
+        "text": "Οδός Yunitsman 5, <br /> Λάρνακα 6936025, Κύπρος",
+        "button": {
+          "text": "Δείτε στον χάρτη",
+          "href": "https://maps.app.goo.gl/gHhJcij5konBfM969"
+        }
+      }
+    },
+    "madeBy": {
+      "text": "Made by twid",
+      "href": "https://twid.marketing/en"
+    }
+  }
+}
