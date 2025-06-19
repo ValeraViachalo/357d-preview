@@ -63,6 +63,8 @@ export const HeroHome = ({ data }) => {
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveSlide((prevIndex) => (prevIndex + 1) % loadedImages.length);
+      console.log("versrel not a prod");
+      
     }, 5000);
     return () => clearInterval(interval);
   }, [loadedImages]);
