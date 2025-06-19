@@ -1,16 +1,10 @@
 "use client";
 import { motion } from "framer-motion";
-import Image from "next/image";
-import React, { useEffect, useState } from "react";
+import React from "react";
 
-export const Content = ({ url, refCon, lazy = true, ...rest }) => {
-  const [offset, setOffset] = useState(0);
-  const isImage = url.match(/\.(jpeg|jpg|gif|png|webp)$/) != null;
+export const Content = ({ url, urlMobile= false, lazy = true, ...rest }) => {
   const isVideo = url.match(/\.(mp4|webm)$/) != null;
 
-  useEffect(() => {
-    setOffset(window.innerHeight);
-  }, []);
 
   const ContentElement = isVideo ? (
     <motion.video
@@ -20,17 +14,15 @@ export const Content = ({ url, refCon, lazy = true, ...rest }) => {
       webkit-playsinline="true"
       playsInline
       {...rest}
-      ref={refCon && refCon}
+      width="100%"
+      height="100%"
     >
       <source src={url} />
     </motion.video>
   ) : (
-    <motion.img src={url} ref={refCon && refCon} {...rest} />
+    <motion.img src={url} width="100%"
+    height="100%" {...rest} />
   );
-
-  if (typeof window === "undefined") {
-    return null; // or a placeholder component
-  }
 
   return (
     ContentElement

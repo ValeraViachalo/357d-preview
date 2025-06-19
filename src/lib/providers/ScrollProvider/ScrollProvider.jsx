@@ -1,16 +1,10 @@
 "use client"
 import React, {
-  createContext,
-  useContext,
-  useRef,
   useEffect,
   useState,
 } from "react";
-import dynamic from "next/dynamic";
 import { ScrollContext } from "./context";
 import { ScrollBar } from "@/utils/ScrollBar/ScrollBar";
-
-export const useScrollLenis = () => useContext(ScrollContext);
 
 function easeInOutExpo(x) {
   return x === 0
@@ -52,16 +46,16 @@ export const ScrollProvider = ({ children, scrollBar = false, wrapper }) => {
     }
   }, []);
 
-  // Add click event listener for data-use-scroll elements
+  // Add click event listener for data-scroll-anchor elements
   useEffect(() => {
     const handleClick = (e) => {
-      const scrollTrigger = e.target.closest('[data-use-scroll]');
+      const scrollTrigger = e.target.closest('[data-scroll-anchor]');
       if (scrollTrigger) {
         // Prevent default behavior and event propagation
         e.preventDefault();
         e.stopPropagation();
         
-        const targetSection = scrollTrigger.getAttribute('data-use-scroll');
+        const targetSection = scrollTrigger.getAttribute('data-scroll-anchor');
         const targetElement = document.querySelector(targetSection);
         if (targetElement) {
           scrollTo(targetElement);
@@ -79,7 +73,6 @@ export const ScrollProvider = ({ children, scrollBar = false, wrapper }) => {
       lenis.scrollTo(target, {
         duration: 1.7,
         easing: (x) => easeInOutExpo(x),
-        offset: -100
       });
     }
   };

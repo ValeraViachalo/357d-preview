@@ -3,6 +3,8 @@
 @import "./utils/variables";
 @import "./utils/transition-page";
 @import "./utils/keyframes";
+@import "./utils/icons";
+@import "./utils/responsive-data";
 
 .body {
   @extend %body-text;
@@ -83,7 +85,12 @@
 .grid {
   display: grid;
   grid-template-columns: repeat(12, VW(108));
-  grid-gap: VW(10);
+  column-gap: VW(10);
+
+  @include forMobile {
+    grid-template-columns: repeat(6, VW(61, $mobile));
+    column-gap: 0;
+  }
 }
 
 .sr-only {

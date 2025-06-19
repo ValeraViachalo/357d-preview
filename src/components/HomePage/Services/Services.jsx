@@ -1,15 +1,40 @@
-import React from 'react'
-import './Services.scss'
+"use client";
+import React, { useContext, useRef } from 'react'
+import { DataContext } from '@/lib/providers/DataProvider/context';
 
-export default function ServicesHome({ data }) {
+import './Services.scss'
+import { Content } from '@/utils/Content/Content';
+import { useScroll, useTransform } from 'framer-motion';
+
+export default function ServicesHome() {
+  const { data: allData } = useContext(DataContext);
+  const { services: data } = allData;
+  const servicesRef = useRef(null);
+
+  const { scrollYProgress } = useScroll({
+    target: servicesRef,
+    offset: ["0% 100%", "100% 0%"],
+    layoutEffect: false,
+  });
+
+  const y = useTransform(scrollYProgress, [0, 1], ["-20%", "20%"]);
+
   return (
-    <section className="services container">
-      <h1 className="services__title">{data.title}</h1>
+    <section className="services" ref={servicesRef}>
+      {/* <span className="super-text">{data?.title}</span>
       <div className="list">
-        {data.list.map((item, index) => (
-          <p key={index} className='list__item upperCase small-text'>{item}</p>
+        {data?.list.map((service, index) => (
+          <div className="services-card" key={index}>
+            <p>0{index+1}</p>
+            <h1>{service}</h1>
+          </div>
         ))}
-      </div>
+      </div> */}
+      <Content 
+        url={data?.content}
+        style={{y}}
+        className="services-content"
+      />
     </section>
   )
 }

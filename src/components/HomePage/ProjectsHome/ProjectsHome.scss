@@ -1,0 +1,171 @@
+.home {
+  .projects {
+    // background-color: $g-10;
+    background-color: $c-white;
+    position: relative;
+    z-index: 3;
+    padding-top: VW(140);
+    padding-bottom: VW(100);
+    
+    @include forMobile {
+      overflow: hidden;
+      padding-top: VW(60, $mobile);
+      padding-bottom: VW(10, $mobile);
+    }
+
+    &__title {
+      // margin: VW(100) auto 0;
+      display: block;
+      text-align: center;
+    }
+
+    &-list {
+      margin-top: VW(100);
+      // border-bottom: VW(1) solid $c-black;
+
+      @include forMobile {
+        margin-top: VW(40, $mobile);
+      }
+
+      .card {
+        display: flex;
+        justify-content: space-between;
+        position: relative;
+        gap: VW(20);
+        padding: VW(20) 0;
+        border-top: VW(1) solid $c-black;
+
+        @include forMobile {
+          border-top: none;
+          flex-direction: column-reverse;
+          padding: VW(20, $mobile) 0;
+          gap: VW(10, $mobile);
+
+          &:not(:last-of-type) {
+            border-bottom: VW(1, $mobile) solid $c-black;
+          }
+        }
+
+        &__content {
+          position: sticky;
+          top: VW(60);
+          width: 100%;
+          height: fit-content;
+
+          @include forMobile {
+            position: relative;
+            top: 0;
+            width: 100%;
+          }
+        }
+
+        .categories {
+          display: flex;
+          gap: 0.4em;
+          margin-bottom: 0.4em;
+
+          @include forMobile {
+            gap: 0.6em;
+            margin-bottom: 0.6em;
+            margin-top: 0.6em;
+          }
+
+          &__item {
+            padding: 0.45em 0.6em 0.3em;
+            background-color: #00000010;
+            border-radius: 10vw;
+
+            @include forMobile {
+              padding: 0.5em 0.7em 0.2em;
+            }
+
+            &--black {
+              background-color: $c-black;
+              color: $c-white;
+              // color: $green-100;
+            }
+          }
+        }
+
+        .card-about {
+          display: flex;
+          // justify-content: space-between;
+          gap: VW(70);
+          margin-top: VW(50);
+
+          @include forMobile {
+            gap: VW(50, $mobile);
+            margin-top: VW(30, $mobile);
+          }
+
+          &-item-top {
+            opacity: 0.4;
+            padding-bottom: 0.3em;
+          }
+        }
+
+        .bottom {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          gap: VW(10);
+          margin-top: VW(60);
+
+          @include forMobile {
+            margin-top: VW(30, $mobile);
+            gap: VW(10, $mobile);
+          }
+
+          &__button {
+            cursor: wait;
+
+            .button {
+              &--not-available {
+                background-color: $c-black;
+                color: $c-white;
+                pointer-events: none;
+                opacity: 0.2;
+              }
+            }
+          }
+        }
+
+        &__content {
+          width: 50%;
+          display: flex;
+          flex-direction: column;
+          gap: VW(10);
+
+          @include forMobile {
+            width: 100%;
+          }
+
+          &-images {
+            @include forMobile {
+              flex-direction: row;
+              overflow: scroll;
+              width: 110%;
+            }
+          }
+
+          &-item {
+            width: 100%;
+
+            @include forMobile {
+              width: 90%;
+              &:last-of-type {
+                padding-right: 10%;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    &-bottom {
+      padding: VW(20) 0;
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+}

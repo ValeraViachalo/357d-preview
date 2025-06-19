@@ -3,104 +3,75 @@
     margin-top: VW(60);
 
     @include forMobile {
-      margin-top: VW(40, $mobile);
-    }
-
-    .logo {
-      grid-column: 1/6;
-      position: absolute;
-      // height: VW(142);
-      width: VW(577);
-      z-index: 1000000;
-
-      @include forMobile {
-        width: VW(300, $mobile);
-        grid-column: 1/12;
-        grid-row: 1;
-        position: relative;
-      }
-
-      &__image {
-        width: 100%;
-        height: 100%;
-      }
+      margin-top: VW(100, $mobile);
     }
 
     .top {
-      grid-column: 6/10;
-      height: VW(130);
-      
       display: flex;
-      flex-direction: column;
-
-      @include forMobile {
-        height: auto;
-        grid-column: 1/12;
-        grid-row: 2;
-      }
-
-      .adress {
-        margin-top: VW(20);
-        transition: opacity 0.3s ease;
-
-        @include hover {
-          opacity: 0.5;
-        }
-      }
-
-      &-link {
-        margin-top: VW(20);
-        text-decoration: underline;
-
-        transition: opacity 0.3s ease;
-
-        @include hover {
-          opacity: 0.5;
-        }
-      }
-    }
-
-    .background {
-      height: VW(700);
-      overflow: hidden;
-
-      &__item {
-        // height: VW(1000);
-        aspect-ratio: 16/9;
-        width: 100%;
-        height: 100%;
-
-        opacity: 0;
-        filter: blur(1vw);
-        scale: 1.2;
-
-        animation: backgroundPresence 1.5s 0.5s forwards ease;
-      }
-    }
-
-    .slideshow {
-      height: VW(700);
-      margin: 0 VW(20);
-      position: relative;
-      overflow: hidden;
-      
-      @include forMobile {
-        height: VW(500, $mobile);
-        margin: VW(12, $mobile) VW(12, $mobile) 0;
-      }
-
-      .slide {
-        width: 100%;
-        height: 100%;
-
-        position: absolute;
-        inset: 0;
-
-        img {
-          object-fit: cover;
-          width: 100%;
+      justify-content: space-between;
+      .hero {
+        &__logo {
           height: 100%;
+          width: VW(680);
+
+          @include forMobile {
+            display: none;
+          }
         }
+
+        &__title {
+          display: flex;
+          flex-direction: column;
+          gap: VW(5);
+          @include forMobile {
+            font-size: VW(46, $mobile);
+            letter-spacing: VW(-2, $mobile);
+          }
+
+          &--line {
+            font-size: VW(92);
+            line-height: 80%;
+            letter-spacing: VW(-5);
+
+            @include forMobile {
+              font-size: VW(46, $mobile);
+              letter-spacing: VW(-2, $mobile);
+            }
+          }
+
+          .title-anim {
+            position: absolute;
+            width: 100%;
+            font-size: VW(92);
+            line-height: 90%;
+
+            @include forMobile {
+              font-size: VW(46, $mobile);
+              letter-spacing: VW(-2, $mobile);
+            }
+
+            &__wrapper {
+              display: flex;
+              align-items: flex-start;
+              width: 100%;
+              height: VW(72);
+              position: relative;
+              overflow: hidden;
+
+              @include forMobile {
+                height: VW(46, $mobile);
+              }
+            }
+          }
+        }
+      }
+    }
+
+    &__video {
+      margin-top: VW(20);
+
+      @include forMobile {
+        aspect-ratio: 3/5;
       }
     }
   }

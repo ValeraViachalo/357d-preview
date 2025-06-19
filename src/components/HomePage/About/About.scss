@@ -1,13 +1,22 @@
 .home {
   .about {
     position: relative;
-    margin-top: VW(20);
+    z-index: 1;
+    padding-top: VW(20);
+    padding-bottom: VW(20);
+    background-color: $g-10;
+
 
     @include forMobile {
-      margin-top: VW(10, $mobile);
+      padding-top: VW(10, $mobile);
+      padding-bottom: VW(10, $mobile);
     }
-  
+
     .top {
+      @include forMobile {
+        transform: none !important;
+      }
+
       .about {
         &__text {
           position: absolute;
@@ -21,49 +30,65 @@
             line-height: 105%;
           }
         }
-  
+
         &__title {
           text-indent: VW(246);
+          text-transform: capitalize;
+          width: 93%;
           
           @include forMobile {
-            text-indent: VW(88, $mobile);
+            text-indent: VW(62, $mobile);
+            font-size: VW(25, $mobile);
+            width: 100%;
           }
 
           .wrapper:nth-of-type(1) {
             text-indent: VW(246);
           }
-        } 
+        }
       }
     }
-  
+
     .bottom {
-      margin-top: VW(100);
       display: flex;
-      gap: VW(20);
-  
+
+      @include forMobile {
+        flex-direction: column;
+        margin-top: VW(40, $mobile);
+        transform: none !important;
+      }
+
       .card {
+        padding-left: VW(20);
         width: 100%;
-  
-        &__title {
-          position: relative;
-          padding-bottom: VW(2);
-          margin-bottom: VW(20);
-  
-          .line {
-            display: block;
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background-color: $c-black;
-            height: VW(1);
-            opacity: 0.1;
+        height: VW(300);
+        display: flex;
+        align-items: flex-end;
+        position: relative;
+
+        @include forMobile {
+          height: auto;
+          padding: VW(12, $mobile) 0 VW(10, $mobile);
+
+          h1 {
+            font-size: VW(25, $mobile);
           }
         }
-  
-        &__image {
-          width: auto;
-          height: VW(140);
+
+        .line {
+          position: absolute;
+          top: 0;
+          bottom: VW(15);
+          left: 0;
+          background-color: $c-black;
+          width: VW(1);
+
+          @include forMobile {
+            bottom: auto;
+            width: auto;
+            right: 0;
+            height: VW(1, $mobile);
+          }
         }
       }
     }

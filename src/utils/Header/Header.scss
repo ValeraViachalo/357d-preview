@@ -1,71 +1,46 @@
 .header {
   position: fixed;
-  padding: VW(10) VW(20);
+  padding: VW(10) VW(0) VW(10) VW(20);
   top: 0;
   left: 0;
   right: 0;
   z-index: 1000;
-
   align-items: center;
 
-  color: $c-black;
-  fill: $c-black;
-  stroke: $c-black;
-
-  transition: background-color 0.3s 0.2s ease, color 0.3s 0.2s ease;
+  // color: $c-black;
+  // fill: $c-black;
+  // stroke: $c-black;
+  background-color: #d9d9d980;
+  backdrop-filter: blur(VW(100));
+  // transition: background-color 0.3s 0.2s ease, color 0.3s 0.2s ease;
 
   @include forMobile {
-    padding: VW(5, $mobile) VW(10, $mobile);
-  }
-
-  &--white {
-    color: $c-white;
-    fill: $c-white;
-    stroke: $c-white;
-
-    .header__logo {
-      filter: invert(1);
-      
-      &--regular {
-        filter: invert(0) !important;
-
-        .header__logo-text {
-          color: $c-black;
-        }
-      }
-    }
-  }
-
-  &::after {
-    content: "";
-    position: absolute;
-    bottom: 0%;
-    left: VW(15);
-    right: VW(15);
-    height: VW(1);
-    background-color: $c-black;
-    opacity: 0.1;
-
-    z-index: -1;
-  }
-
-  &--bg {
-    color: $c-black;
-    fill: $c-black;
-    stroke: $c-black;
-
-    background-color: $c-white;
-
-    .header__logo {
-      filter: invert(0);
-    }
+    backdrop-filter: blur(10vw);
+    padding: VW(10, $mobile) VW(10, $mobile);
+    // padding: VW(10, $mobile);
+    display: flex !important;
+    justify-content: space-between;
   }
 
   &__logo {
     grid-column: 1/3;
-    transition: filter 0.3s ease;
+    transition: filter 0.3s ease, opacity 0.3s ease;
     width: VW(115);
     height: VW(25);
+    opacity: 1;
+
+    @include forMobile {
+      width: VW(120, $mobile);
+      height: VW(26, $mobile);
+    }
+
+    &--hide {
+      opacity: 0;
+
+      @include forMobile {
+        opacity: 1;
+      }
+    }
 
     @include forMobile {
       width: VW(100, $mobile);
@@ -114,18 +89,27 @@
           position: absolute;
           opacity: 0;
           transition: inherit;
-          filter: blur(.2vw);
+          filter: blur(0.2vw);
         }
       }
     }
   }
 
   &__list {
-    grid-column: 6/11;
+    // grid-column: 5/11;
     display: flex;
     align-items: center;
+
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+
     gap: VW(10);
     margin-top: VW(3);
+
+    @include forMobile {
+      display: none;
+    }
 
     .link {
       padding: 0 VW(15);
@@ -138,20 +122,118 @@
   }
 
   .right {
-    grid-column: 11/13;
+    grid-column: 11/14;
     display: flex;
     justify-content: flex-end;
     align-items: center;
     gap: VW(15);
-    
+    height: 100%;
+
     @include forMobile {
       grid-column: 7/13;
       gap: VW(10, $mobile);
-      padding-right: VW(10, $mobile);
+      // padding-right: VW(0, $mobile);
     }
 
     a {
       transition: color 0.3s ease;
+    }
+
+    .contact-button {
+      position: relative;
+      padding: 0 VW(20);
+      height: 100%;
+      display: flex;
+      align-items: center;
+      transition: color 0.5s ease;
+      gap: 0.5em;
+
+      @include forMobile {
+        padding: 0 VW(20, $mobile);
+      }
+
+      // @include hover {
+      //   color: $c-white;
+
+      //   &::after {
+      //     opacity: 1;
+      //   }
+
+      //   .contact-button__icon > path {
+      //     stroke: $c-white;
+      //   }
+      // }
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 0;
+        z-index: -1;
+        transform: translateY(-50%);
+        width: max(1%, 1px);
+        height: VW(36);
+        background-color: $c-black;
+
+        @include forMobile {
+          height: VW(30, $mobile);
+          opacity: 0.4;
+        }
+      }
+      &::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        right: 0;
+        z-index: -1;
+        transform: translateY(-50%);
+        width: max(1%, 1px);
+        background-color: $c-black;
+
+        @include forMobile {
+          height: VW(30, $mobile);
+          opacity: 0.4;
+        }
+      }
+      // &::after {
+      //   content: '';
+      //   position: absolute;
+      //   top: -10%;
+      //   left: 0;
+      //   z-index: -1;
+      //   transform: translateY(-50%);
+      //   width: 100%;
+      //   height: VW(74);
+      //   background-color: $c-black;
+      //   opacity: 0;
+      //   transition: opacity 0.5s ease;
+      // }
+
+      &__icon {
+        width: VW(11);
+        height: VW(12);
+        padding-bottom: VW(4);
+
+        @include forMobile {
+          display: none;
+        }
+
+        & > path {
+          stroke: $c-black;
+          transition: stroke 0.3s ease;
+        }
+      }
+    }
+  }
+
+  &__burger {
+    width: VW(30, $mobile);
+    height: 100%;
+    padding: VW(14, $mobile) VW(0, $mobile) VW(14, $mobile) VW(10, $mobile);
+    display: none;
+
+    @include forMobile {
+      display: block;
     }
   }
 }

@@ -1,0 +1,178 @@
+.overview {
+  background-color: $green-100;
+  padding: VW(40) 0 VW(20);
+
+  @include forMobile {
+    padding: VW(60, $mobile) 0 VW(10, $mobile);
+    overflow: hidden;
+  }
+
+  .title {
+    position: relative;
+    width: 92%;
+
+    @include forMobile {
+      display: flex;
+      flex-direction: column;
+      gap: VW(10, $mobile);
+    }
+
+    &__text {
+      position: absolute;
+      width: VW(160);
+
+      @include forMobile {
+        position: relative;
+        width: auto;
+      }
+    }
+
+    &__title {
+      text-indent: VW(246);
+
+      @include forMobile {
+        text-indent: 0;
+      }
+    }
+  }
+
+  .interests {
+    margin-top: VW(20);
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+
+    @include forMobile {
+      flex-direction: column;
+      align-items: center;
+      // gap: VW(20, $mobile);
+    }
+
+    .links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4em;
+      margin-top: 0.5em;
+    
+      @include forMobile {
+        width: 110%;
+        flex-direction: row;
+        overflow: scroll;
+        gap: VW(5, $mobile);
+        padding-bottom: VW(25, $mobile);
+      }
+    }
+
+    .link {
+      padding: 0.45em 0.6em 0.3em;
+      border: VW(1) solid $c-black;
+      border-radius: 10vw;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      text-wrap: nowrap;
+
+      &__wrapper {
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: 0.4em;
+        width: fit-content;
+
+        @include hover {
+          .link {
+            background-color: $c-black;
+            color: $green-100;
+          }
+          .hover-text {
+            opacity: 0.4;
+          }
+        }
+
+        @include forMobile {
+          flex-direction: column;
+          // width: 100%;
+          justify-content: center;
+          align-items: flex-start;
+        }
+
+        &--active {
+          .link {
+            background-color: $c-black;
+            color: $green-100;
+          }
+          .hover-text {
+            opacity: 0.4 !important;
+          }
+        }
+
+        .hover-text {
+          opacity: 0;
+          transition: opacity 0.3s ease;
+          text-wrap: nowrap;
+          pointer-events: none;
+
+          @include forMobile {
+            position: absolute;
+            bottom: -65%;
+          }
+        }
+      }
+    }
+
+    &__list {
+      width: 40%;
+      position: sticky;
+      top: VW(60);
+      height: fit-content;
+      margin-bottom: VW(50);
+
+      @include forMobile {
+        position: relative;
+        top: 0;
+        width: 100%;
+      }
+    }
+
+    &__content {
+      width: VW(920);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: VW(20);
+
+      @include forMobile {
+        width: 100%;
+        align-items: center;
+      }
+
+      .image {
+        position: absolute;
+        inset: 0;
+
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+
+        &__wrapper {
+          position: relative;
+          width: VW(920);
+          height: VW(620);
+          overflow: hidden;
+
+          @include forMobile {
+            width: 100%;
+            height: VW(300, $mobile);
+          }
+        }
+      }
+
+      .map {
+        width: 100%;
+        height: VW(620);
+
+        @include forMobile {
+          height: VW(300, $mobile);
+        }
+      }
+    }
+  }
+}

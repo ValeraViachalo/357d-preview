@@ -9,43 +9,6 @@ export const anim = (variants) => {
   };
 };
 
-export const presenceAnim = (variants, state) => {
-  return {
-    initial: "initial",
-    animate: state ? "animate" : "initial",
-    variants,
-  };
-};
-
-const transitionLayer = {
-  ease: [0.08, 0.99, 0.37, 1],
-  duration: 1.5,
-};
-
-export const HeroHomeAnim = {
-  slideshow: {
-    enter: (direction) => {
-      return {
-        clipPath: "inset(0% 0% 0% 100%)",
-        x: "30%",
-        transition: transitionLayer,
-      };
-    },
-    center: {
-      clipPath: "inset(0% 0% 0% 0%)",
-      x: "0%",
-      transition: transitionLayer,
-    },
-    exit: (direction) => {
-      return {
-        clipPath: "inset(0% 0% 0% 0%)",
-        x: "-30%",
-        transition: transitionLayer,
-      };
-    },
-  },
-};
-
 export const TitlePresence = {
   initial: {
     clipPath: "inset(0% -20% 100% -20%)",
@@ -68,6 +31,35 @@ export const TitlePresence = {
     clipPath: "inset(0% 0% 100% 0%)",
     y: "100%",
   },
+};
+
+export const ContactTitle = {
+  initial: {
+    clipPath: "inset(100% 0% 0% 0)",
+    y: "-100%",
+    transition: {
+      duration: 1,
+      ease: ease.inOutCirc,
+    },
+  },
+  animate: (delay) => ({
+    clipPath: "inset(0% 0% 0% 0)",
+    y: 0,
+    transition: {
+      duration: 1,
+      delay,
+      ease: ease.inOutCirc,
+    },
+  }),
+  exit: (delay) => ({
+    clipPath: "inset(0% 0% 100% 0)",
+    y: "100%",
+    transition: {
+      duration: 1,
+      delay,
+      ease: ease.inOutCirc,
+    },
+  }),
 };
 
 export const BluredPresence = {
@@ -118,63 +110,6 @@ export const BluredPresence = {
   },
 };
 
-export const ContactTitle = {
-  variant2: {
-    initial: {
-      clipPath: "inset(100% 0% 0% 0)",
-      y: "-100%",
-      transition: {
-        duration: 1,
-        ease: ease.inOutCirc,
-      },
-    },
-    animate: {
-      clipPath: "inset(0% 0% 0% 0)",
-      y: 0,
-      transition: {
-        duration: 1,
-        ease: ease.inOutCirc,
-      },
-    },
-    exit: {
-      clipPath: "inset(0% 0% 100% 0)",
-      y: "100%",
-      transition: {
-        duration: 1,
-        ease: ease.inOutCirc,
-      },
-    },
-  },
-  variant3: {
-    initial: {
-      clipPath: "inset(100% 0% 0% 0)",
-      y: "-100%",
-      transition: {
-        duration: 1,
-        ease: ease.inOutCirc,
-      },
-    },
-    animate: (delay) => ({
-      clipPath: "inset(0% 0% 0% 0)",
-      y: 0,
-      transition: {
-        duration: 1,
-        delay,
-        ease: ease.inOutCirc,
-      },
-    }),
-    exit: (delay) => ({
-      clipPath: "inset(0% 0% 100% 0)",
-      y: "100%",
-      transition: {
-        duration: 1,
-        delay,
-        ease: ease.inOutCirc,
-      },
-    }),
-  },
-};
-
 export const ProjectsAnim = {
   wrapper: {
     initial: {
@@ -198,21 +133,143 @@ export const ProjectsAnim = {
   card: {
     initial: {
       opacity: 0,
+      filter: "blur(0.2vw)",
     },
     animate: (i) => ({
       opacity: 1,
+      filter: "blur(0vw)",
       transition: {
-        duration: 0.5,
+        duration: 1.2,
         ease: [0.33, 1, 0.68, 1],
-        delay: 0.12 * i,
+        delay: 0.1,
       },
     }),
     exit: {
       opacity: 0,
+      filter: "blur(0.2vw)",
       transition: {
         duration: 0.5,
         ease: [0.33, 1, 0.68, 1],
       },
     },
+  },
+  tableTextAnim: {
+    initial: {
+      clipPath: "inset(0% -20% 100% -20%)",
+      y: "100%",
+    },
+    animate: {
+      clipPath: "inset(0% -20% -20% -20%)",
+      y: "0%",
+      transition: {
+        duration: 1,
+        ease: ease.inOutCirc,
+        delay: 0.4,
+      },
+      transitionEnd: {
+        clipPath: "none",
+        y: "auto",
+      },
+    },
+    exit: {
+      clipPath: "inset(100% -20% 0% -20%)",
+      y: "-100%",
+      transition: {
+        duration: 1,
+        ease: ease.inOutCirc,
+      },
+      transitionEnd: {
+        clipPath: "none",
+        y: "auto",
+      },
+    },
+  },
+  slideshow: {
+    initial: (direction) => {
+      return {
+        clipPath: "inset(0% 0% 0% 100%)",
+        x: "30%",
+        zIndex: 2,
+        transition: {
+          ease: [0.08, 0.99, 0.37, 1],
+          duration: 1.5,
+        },
+      };
+    },
+    animate: {
+      clipPath: "inset(0% 0% 0% 0%)",
+      x: "0%",
+      zIndex: 1,
+      transition: {
+        ease: [0.08, 0.99, 0.37, 1],
+        duration: 1.5,
+      },
+    },
+    exit: (direction) => {
+      return {
+        clipPath: "inset(0% 0% 0% 0%)",
+        x: "-30%",
+        zIndex: 1,
+        transition: {
+          ease: [0.08, 0.99, 0.37, 1],
+          duration: 1.5,
+        },
+      };
+    },
+  },
+};
+
+export const MenuAnim = {
+  wrapper: {
+    initial: {
+      opacity: 0,
+      filter: "blur(0.4vw)",
+    },
+    animate: {
+      opacity: 1,
+      filter: "blur(0vw)",
+      transition: {
+        duration: 0.5,
+        ease: ease.inOutCirc,
+      },
+    },
+    exit: {
+      opacity: 0,
+      filter: "blur(0.4vw)",
+      transition: {
+        duration: 0.5,
+        ease: ease.inOutCirc,
+      },
+    },
+  },
+};
+
+const transitionLayer = {
+  ease: [0.08, 0.99, 0.37, 1],
+  duration: 1.5,
+};
+
+export const GalleryAnim = {
+  initial: (direction) => {
+    return {
+      zIndex: 2,
+      clipPath: "inset(0% 0% 0% 100%)",
+      x: "30%",
+      transition: transitionLayer,
+    };
+  },
+  animate: {
+    zIndex: 3,
+    clipPath: "inset(0% 0% 0% 0%)",
+    x: "0%",
+    transition: transitionLayer,
+  },
+  exit: (direction) => {
+    return {
+      zIndex: 1,
+      clipPath: "inset(0% 0% 0% 0%)",
+      x: "-30%",
+      transition: transitionLayer,
+    };
   },
 };

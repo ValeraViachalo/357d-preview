@@ -1,10 +1,10 @@
 "use client";
 import React, { useRef, useState } from "react";
-import classNames from "classnames";
+import clsx from "clsx";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import "./LangSwitch.scss";
-import { LinkPageTransition } from "@/utils/LinkPageTransition/LinkPageTransition";
+// import { LinkPageTransition } from "@/utils/LinkPageTransition/LinkPageTransition";
 
 export const LangSwitch = () => {
   const path = usePathname();
@@ -16,12 +16,12 @@ export const LangSwitch = () => {
 
   return (
     <DropDown
-      headText={isGrePath ? "Gre" : "Eng"}
+      headText={isGrePath ? "GR" : "EN"}
     >
       <div className="dropdown__content">
-        <LinkPageTransition href={isGrePath ? (engPath || "/") : grePath} className="dropdown__link">
-          <p className="small-text">{isGrePath ? "Eng" : "Gre"}</p>
-        </LinkPageTransition>
+        <Link href={isGrePath ? (engPath || "/") : grePath} className="dropdown__link">
+          <p className="small-text">{isGrePath ? "EN" : "GR"}</p>
+        </Link>
       </div>
     </DropDown>
   );
@@ -46,7 +46,7 @@ const DropDown = ({ headText, children, ...rest }) => {
 
   return (
     <div
-      className={classNames("dropdown", {
+      className={clsx("dropdown", {
         "dropdown--active": isHovered,
       })}
       onMouseEnter={handleMouseEnter}
@@ -65,7 +65,7 @@ const DropDown = ({ headText, children, ...rest }) => {
           </svg>
       </div>
       <div
-        className={classNames("dropdown__wrapper", {
+        className={clsx("dropdown__wrapper", {
           "dropdown__wrapper--active": isHovered,
         })}
       >

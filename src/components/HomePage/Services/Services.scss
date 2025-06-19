@@ -1,43 +1,28 @@
 .home {
   .services {
-    margin-top: VW(120);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    // margin-top: VW(10);
+        overflow: hidden;
 
-    @include forMobile {
-      margin-top: VW(60, $mobile);
-      flex-direction: column;
-      gap: VW(20, $mobile);
-    }
-  
-    &__title {
-      width: VW(400);
-
-      @include forMobile {
-        width: 100%;
-      }  
-    }
-  
     .list {
-      display: flex;
-      flex-direction: column;
-      gap: VW(15);
-      width: 50%;
-      
-      @include forMobile {
-        gap: VW(15, $mobile);
-        width: 100%;
-      }  
+      border-bottom: VW(1) solid $c-black;
+      .services-card {
+        display: flex;
+        gap: VW(40);
+        padding: VW(15) 0 VW(12);
+        border-top: VW(1) solid $c-black;
+      }
+    }
 
-      &__item {
-        border-bottom: .1vw solid #00000020;
-        padding-bottom: VW(15);
-        
-        @include forMobile {
-          padding-bottom: VW(10, $mobile);
-          font-size: VW(14, $mobile);
-        }
+    &-content {
+      width: 100%;
+      height: VW(900);
+      overflow: hidden;
+
+      @include forMobile {
+        height: auto;
+        aspect-ratio: 3/4;
+        transform: none !important;
+        object-position: 20%;
       }
     }
   }

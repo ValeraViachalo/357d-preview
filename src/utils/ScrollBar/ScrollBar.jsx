@@ -1,17 +1,33 @@
 import { useScroll, useSpring, motion, useTransform } from "framer-motion";
 import { useContext, useEffect, useState } from "react";
-import { useScrollLenis } from "@/lib/providers/ScrollProvider/ScrollProvider";
-import { ScrollContext } from "@/lib/providers/ScrollProvider/context";
+import { anim } from "@/lib/helpers/anim";
 
 import "./ScrollBar.scss";
-import { usePathname } from "next/navigation";
+import { ScrollContext } from "@/lib/providers/ScrollProvider/context";
 
-export const ScrollBar = () => {
+const presence = {
+  initial: {
+    x: "100%"
+  },
+  animate: {
+    x: "0%",
+    transition: {
+      duration: .3,
+      delay: .3
+    }
+  },
+  exit: {
+    x: "100%",
+    transition: {
+      duration: .3,
+    }
+  }
+}
+
+export const ScrollBar = ({}) => {
   const [rangeValue, setRangeValue] = useState(0);
   const [documentHeight, setDocumentHeight] = useState(0);
   const [isMounted, setIsMounted] = useState(false);
-
-  const path = usePathname();
 
   const { scrollYProgress } = useScroll();
   const scrollSpring = useSpring(scrollYProgress, {
@@ -25,12 +41,10 @@ export const ScrollBar = () => {
 
   useEffect(() => {
     setIsMounted(true);
-    setTimeout(() => {
-      setDocumentHeight(
-        document.documentElement.scrollHeight - window.innerHeight
-      );
-    }, 100);
-  }, [path]);
+    setDocumentHeight(
+      document.documentElement.scrollHeight - window.innerHeight
+    );
+  }, []);
 
   const handleRangeChange = (e) => {
     const value = e.target.value;
@@ -44,10 +58,18 @@ export const ScrollBar = () => {
       setRangeValue(v * 100);
     });
     return () => unsubscribe();
-  }, [scrollYProgress, path]);
+  }, [scrollYProgress]);
+
+  if (!isMounted) {
+    return null; // or a loading placeholder
+  }
 
   return (
-    <div className="progressBar" data-desktop-element>
+    <motion.div
+      {...anim(presence)}
+      className="progressBar"
+      data-desktop-element
+    >
       <motion.div className="progressBar__bar" style={{ top, y }} />
       <input
         type="range"
@@ -57,6 +79,6 @@ export const ScrollBar = () => {
         onChange={handleRangeChange}
         className="progressBar__range"
       />
-    </div>
+    </motion.div>
   );
 };

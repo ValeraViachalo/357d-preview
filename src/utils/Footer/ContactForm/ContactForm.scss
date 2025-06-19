@@ -1,0 +1,255 @@
+.contact-form {
+  background-color: $green-100;
+  padding: VW(20);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  position: relative;
+
+  @include forMobile {
+    padding: VW(40, $mobile) VW(10, $mobile) VW(10, $mobile);
+    gap: VW(30, $mobile);
+  }
+
+  &__logo {
+    width: 100%;
+    height: auto;
+  }
+
+  .bottom {
+    @include forMobile {
+      margin-top: VW(30, $mobile);
+    }
+
+    p {
+      display: flex;
+      gap: 0.3em;
+    }
+
+    &__title {
+      width: 100%;
+      margin-bottom: VW(10);
+
+      @include forMobile {
+        // margin-bottom: VW(60, $mobile);
+      }
+
+      .title-anim {
+        width: VW(200);
+        display: block;
+
+        @include forMobile {
+          width: VW(120, $mobile);
+        }
+      }
+
+      &-top-wrapper {
+        display: flex;
+        gap: .3em;
+      }
+    }
+  }
+
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: VW(10);
+    align-items: flex-start;
+    margin-top: VW(20);
+
+    @include forMobile {
+      gap: VW(20, $mobile);
+    }
+
+    &__title {
+      @include forMobile {
+        margin-bottom: VW(30, $mobile);
+        font-size: VW(35, $mobile);
+      }
+    }
+
+    .input {
+      width: 100%;
+      padding: VW(10) 0;
+      border: none;
+      border-bottom: VW(1) solid $g-80;
+      border-radius: 0vw;
+      color: $c-black;
+      background-color: transparent;
+
+      @include forMobile {
+        padding: VW(10, $mobile) 0;
+        font-size: VW(16, $mobile);
+      }
+
+      &:focus {
+        outline: none;
+      }
+
+      &::placeholder {
+        opacity: 1; /* Standard */
+        color: inherit;
+      }
+
+      &::-webkit-input-placeholder {
+        opacity: 1; /* Chrome, Safari, newer Opera */
+        color: inherit;
+      }
+
+      &::-moz-placeholder {
+        opacity: 1; /* Firefox */
+        color: inherit;
+      }
+
+      &:-ms-input-placeholder {
+        opacity: 1; /* IE 10-11 */
+        color: inherit;
+      }
+
+      &:-moz-placeholder {
+        opacity: 1; /* Firefox (older) */
+        color: inherit;
+      }
+
+      &:default {
+        opacity: 100%;
+      }
+
+      &:-webkit-autofill {
+        opacity: 100%;
+        outline: none;
+      }
+
+      &--error {
+        &:focus {
+          color: $c-black;
+        }
+      }
+
+      &-error-msg {
+        padding-top: VW(5);
+        opacity: 0.5;
+        color: red;
+      }
+
+      &-wrapper {
+        width: 100%;
+      }
+
+      &.textarea {
+        max-width: 100%;
+        min-width: 100%;
+        min-height: 1.6em;
+        max-height: VW(130);
+      }
+    }
+
+    &-bottom {
+      display: flex;
+      flex-direction: column;
+      gap: VW(10);
+
+      .submit-button {
+        // width: fit-content;
+        padding: VW(15) VW(35) VW(12);
+        // margin-top: VW(10);
+        text-transform: uppercase;
+
+        @include forMobile {
+          padding: VW(15, $mobile) 0 VW(12, $mobile);
+          margin-top: VW(20, $mobile);
+        }
+
+        &--disabled {
+          opacity: 0.4;
+          pointer-events: none;
+
+          .button__text {
+            transform: none !important;
+          }
+        }
+      }
+
+      .accept-wrapper {
+        display: flex;
+        align-items: center;
+        gap: 0.4em;
+
+        @include forMobile {
+          gap: 0.6em;
+        }
+
+        .custom-checkbox {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 1.7em;
+          border: VW(1) solid $c-black;
+          // border-radius: 50%;
+          border-radius: 10vw;
+          aspect-ratio: 1;
+          cursor: pointer;
+          transition: background 0.2s;
+
+          &.checked {
+            // border-color: $c-black;
+            background: $c-black;
+
+            svg {
+              stroke-dashoffset: 0;
+            }
+          }
+          &.error {
+            border-color: red;
+          }
+          svg {
+            display: block;
+            width: 1.2em;
+            height: 1.2em;
+            stroke-dasharray: 20;
+            stroke-dashoffset: 20;
+            transition: stroke-dashoffset 0.5s $ease-in-out-sine;
+          }
+        }
+
+        .accept-text {
+          width: fit-content;
+          opacity: 0.7;
+
+          @include forMobile {
+            font-size: VW(13.5, $mobile);
+          }
+
+          a {
+            font: inherit;
+            color: $c-black;
+            text-decoration: underline;
+            transition: color 0.2s;
+
+            &:hover {
+              color: $g-100;
+            }
+          }
+        }
+      }
+    }
+
+    &-success-message {
+      position: absolute;
+      inset: 0;
+      z-index: 10;
+      text-align: center;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: VW(10);
+
+      padding: 0 VW(70);
+
+      background-color: $green-100;
+    }
+  }
+}

@@ -1,17 +1,21 @@
+import { Content } from "@/utils/Content/Content";
+
 import "./HomePage.scss";
-import { HeroHome } from "./Hero/Hero";
+import { ScrollProvider } from "@/lib/providers/ScrollProvider/ScrollProvider";
+import { AnchorLink } from "@/utils/AnchorLink/AnchorLink";
+import { motion } from "framer-motion";
+import HeroHome from "./Hero/Hero";
 import AboutHome from "./About/About";
-import ProjectsHome from "./Projects/Projects";
+import ProjectsHome from "./ProjectsHome/ProjectsHome";
 import ServicesHome from "./Services/Services";
 
-const HomePage = ({ data }) => {
-  
+const HomePage = () => {
   return (
     <main className="home">
-      <HeroHome data={data.hero} />
-      <AboutHome data={data.about}/>
-      {/* <ProjectsHome data={data.projects} /> */}
-      <ServicesHome data={data.services} />
+      <HeroHome />
+      <AboutHome />
+      <ProjectsHome />
+      <ServicesHome />
     </main>
   );
 };

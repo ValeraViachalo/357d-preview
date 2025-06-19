@@ -1,20 +1,34 @@
 .button {
-  padding: VW(13) VW(60) VW(10);
-  border-radius: 10vw;
-  // overflow: hidden;
-  display: inline-flex;
-  transition: scale 1s $ease-in-out-circ;
-  width: fit-content;
+  padding: VW(15) 0 VW(12);
+  width: 100%;
+  
+  border: VW(1) solid $c-black;
+  background-color: $c-black;
+  color: $c-white;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2em;
+
+  transition: background-color 0.3s 0.2s ease, color 0.3s 0.2s ease;
   
   @include forMobile {
-    padding: VW(13, $mobile) VW(30, $mobile) VW(10, $mobile);
+    padding: VW(15, $mobile) 0 VW(12, $mobile);
   }
 
   @include hover {
-    scale: 1.05;
+    color: $c-black;
+    background-color: transparent;
 
     .button__text {
       transform: translateY(-1.22em);
+    }
+  }
+
+  &--green-hover {
+    @include hover {
+      color: $green-100;
     }
   }
 
@@ -22,21 +36,10 @@
     text-shadow: 0 1.2em 0;
     transition: transform 1s $ease-in-out-circ;
     display: inline-block;
-
     &-wrapper {
       height: 1.1em;
       overflow-y: hidden;
       display: inline-block;
     }
-  }
-
-  &--white {
-    background-color: $c-white;
-    color: $c-black;
-  }
-  
-  &--black {
-    color: $c-white;
-    background-color: $c-black;
   }
 }
