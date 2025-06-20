@@ -33,7 +33,7 @@ const ProjectCard = ({ project }) => {
     <div className="card">
       <div className="card__content">
         <div className="categories">
-          {project?.categories.map((category, index) => (
+          {/* {project?.categories.map((category, index) => (
             <span
               className={clsx("categories__item", {
                 "categories__item--black": category === "Ready to move in",
@@ -42,7 +42,7 @@ const ProjectCard = ({ project }) => {
             >
               {category}
             </span>
-          ))}
+          ))} */}
         </div>
         <h1 className="card__title">{project.title}</h1>
         <p>{project?.adress}</p>

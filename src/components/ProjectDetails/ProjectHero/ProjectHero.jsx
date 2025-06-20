@@ -23,6 +23,9 @@ export default function ProjectHero() {
   const opacity = useTransform(scrollYProgress, [0, 1], ["30%", "100%"]);
   const scaleY = useTransform(scrollYProgress, [0, 1], [1, 1.5]);
 
+  console.log(data);
+  
+
   return (
     <section className="hero" ref={heroRef}>
       <Content
@@ -38,9 +41,14 @@ export default function ProjectHero() {
         <div className="top">
           <span className="hero__title">{data.title}</span>
           <div className="hero__categories">
-            {data.categories.map((category, index) => (
+            {data?.type.length !== 0 && data?.type.map((category, index) => (
               <span className="category" key={index}>
-                {category.text}
+                {category?.text}
+              </span>
+            ))}
+            {data?.state.length !== 0 && data?.state.map((category, index) => (
+              <span className="category" key={index}>
+                {category?.text}
               </span>
             ))}
           </div>

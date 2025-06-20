@@ -90,7 +90,7 @@ const MapElement = forwardRef(({
     handleMarkerClick,
     getMap: () => mapInstanceRef.current,
     centerOnPOI: (poiSlug) => {
-      const poi = pointsOfInterest.find(p => p.slug === poiSlug);
+      const poi = pointsOfInterest.find(p => p.name === poiSlug);
       if (poi) handleMarkerClick(poi);
     }
   }), [handleMarkerClick, pointsOfInterest]);
@@ -141,7 +141,7 @@ const MapElement = forwardRef(({
 
           return (
             <OverlayView
-              key={poi.slug}
+              key={poi.name}
               position={position}
               mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
               getPixelPositionOffset={(width, height) => ({
@@ -151,14 +151,14 @@ const MapElement = forwardRef(({
             >
               <div 
                 className={clsx("marker-wrapper", {
-                  "marker-wrapper--active": activeMarker?.slug === poi.slug,
+                  "marker-wrapper--active": activeMarker?.name === poi.name,
                 })}
                 onClick={() => handleMarkerClick(poi)}
               >
                 <div className="marker" />
                 <div className="active-marker">
                   <Image
-                    src={"/images/icons/interests/business-hub.svg"}
+                    src={poi.icon || "/images/icons/interests/business-hub.svg"}
                     width={42}
                     height={42}
                     alt={poi.name}

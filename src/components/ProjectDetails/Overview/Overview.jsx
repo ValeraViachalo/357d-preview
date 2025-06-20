@@ -71,7 +71,7 @@ export const Overview = ({ data }) => {
                 <div
                   key={index}
                   className={clsx("link__wrapper", {
-                    "link__wrapper--active": activeInterest?.slug === link.slug,
+                    "link__wrapper--active": activeInterest?.name === link.name,
                   })}
                 >
                   <button
@@ -86,7 +86,7 @@ export const Overview = ({ data }) => {
             </div>
           </div>
           <div className="interests__content">
-            <div className="image__wrapper">
+            {/* <div className="image__wrapper">
               {interests.list.map((interest, index) => (
                 <motion.div
                   className={clsx("image", {
@@ -104,7 +104,7 @@ export const Overview = ({ data }) => {
                   />
                 </motion.div>
               ))}
-            </div>
+            </div> */}
             {interests.list.length > 0 && (
               <MapElement
                 ref={mapRef}
