@@ -13,8 +13,7 @@ export const generateMetadata = async ({ params }) => {
 
 export default async function page({ params }) {
   const { project } = await params;
-  const preparedData = await getFetchData(URL_PROJECT_DETAILS + project);
-  const data = useLanguageContent(preparedData, "en");
+  const data = await getFetchData(URL_PROJECT_DETAILS + project);
 
   return (
     <DataProvider data={data}>

@@ -7,7 +7,7 @@ const fallbackData = {
   documentImage: "/images/screenshot2.jpg",
 };
 
-export async function generatePagesMetadata(endpoint, lang = "en") {
+export async function generatePagesMetadata(endpoint) {
   try {
     const preparedData = await fetch(endpoint, {
       next: { revalidate: 120 },
@@ -18,7 +18,7 @@ export async function generatePagesMetadata(endpoint, lang = "en") {
       return response.json();
     });
 
-    const data = preparedData?.seo || preparedData.en?.seo || fallbackData;
+    const data = preparedData?.seo || fallbackData;
 
     return {
       title: data.documentTitle,
