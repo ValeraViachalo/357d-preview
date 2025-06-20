@@ -33,16 +33,28 @@ const ProjectCard = ({ project }) => {
     <div className="card">
       <div className="card__content">
         <div className="categories">
-          {/* {project?.categories.map((category, index) => (
-            <span
-              className={clsx("categories__item", {
-                "categories__item--black": category === "Ready to move in",
-              })}
-              key={project.title + "-category--" + index}
-            >
-              {category}
-            </span>
-          ))} */}
+          {project?.type.length !== 0 &&
+            project?.type.map((category, index) => (
+              <span
+                className={clsx("categories__item", {
+                  "categories__item--black": category === "Ready to move in",
+                })}
+                key={project.title + "-category--" + index}
+              >
+                {category}
+              </span>
+            ))}
+          {project?.state.length !== 0 &&
+            project?.state.map((category, index) => (
+              <span
+                className={clsx("categories__item", {
+                  "categories__item--black": category === "Ready to move in",
+                })}
+                key={project.title + "-category--" + index}
+              >
+                {category}
+              </span>
+            ))}
         </div>
         <h1 className="card__title">{project.title}</h1>
         <p>{project?.adress}</p>
@@ -66,12 +78,18 @@ const ProjectCard = ({ project }) => {
           )}
           <div className="bottom__button">
             <Link
-              href={project.button?.type === "not-available" ? "#contact" : project.button?.href}
+              href={
+                project.button?.type === "not-available"
+                  ? "#contact"
+                  : project.button?.href
+              }
               className={clsx("button", {
                 "button--not-available":
                   project.button?.type === "not-available",
               })}
-              {...(project.button?.type === "not-available" ? { "data-scroll-anchor": "#contact" } : {})}
+              {...(project.button?.type === "not-available"
+                ? { "data-scroll-anchor": "#contact" }
+                : {})}
             >
               <p
                 className="button__text-wrapper upperCase"
