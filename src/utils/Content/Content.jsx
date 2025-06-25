@@ -13,9 +13,9 @@ export const Content = ({ url, urlMobile= false, lazy = true, ...rest }) => {
       autoPlay
       webkit-playsinline="true"
       playsInline
-      {...rest}
       width="100%"
       height="100%"
+      {...rest}
     >
       <source src={url} />
     </motion.video>

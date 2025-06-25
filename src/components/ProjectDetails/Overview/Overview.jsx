@@ -64,7 +64,8 @@ export const Overview = ({ data }) => {
           <h1 className="title__title">{data?.title?.identText}</h1>
         </div>
         <div className="interests">
-          <div className="interests__list">
+          <span></span>
+          {/* <div className="interests__list">
             <p>{interests?.title}</p>
             <div className="links">
               {interests.list.map((link, index) => (
@@ -84,7 +85,7 @@ export const Overview = ({ data }) => {
                 </div>
               ))}
             </div>
-          </div>
+          </div> */}
           <div className="interests__content">
             {/* <div className="image__wrapper">
               {interests.list.map((interest, index) => (

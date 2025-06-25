@@ -30,7 +30,7 @@ export default function HeroHome() {
       </div>
       <div className="hero__video">
         <Content
-          url="/images/home/ForMainPage.mp4"
+          url="/images/home/Spin2.mp4"
           urlMobile="/images/home/ForMainPage-mobile.mp4"
         />
       </div>
